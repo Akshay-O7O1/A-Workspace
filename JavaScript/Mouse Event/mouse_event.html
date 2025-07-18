@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Events Demo</title>
+    <link rel="stylesheet" href="event.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mouse Events Demonstration</h1>
+        
+        <!-- Click Event -->
+        <div class="event-box" id="clickBox">
+            <h3>Click Event</h3>
+            <p>Click me to see the effect!</p>
+            <p class="status" id="clickStatus">Status: Ready</p>
+        </div>
+
+        <!-- Double Click Event -->
+        <div class="event-box" id="doubleClickBox">
+            <h3>Double Click Event</h3>
+            <p>Double click me to see the effect!</p>
+            <p class="status" id="doubleClickStatus">Status: Ready</p>
+        </div>
+
+        <!-- Right Click Event -->
+        <div class="event-box" id="rightClickBox">
+            <h3>Right Click Event (Context Menu)</h3>
+            <p>Right click me to see the effect!</p>
+            <p class="status" id="rightClickStatus">Status: Ready</p>
+        </div>
+
+        <!-- Left Click Event -->
+        <div class="event-box" id="leftClickBox">
+            <h3>Left Click Event</h3>
+            <p>Left click me specifically!</p>
+            <p class="status" id="leftClickStatus">Status: Ready</p>
+        </div>
+
+        <!-- Mouse Over Event -->
+        <div class="event-box" id="mouseOverBox">
+            <h3>Mouse Over Event</h3>
+            <p>Hover over me to see the effect!</p>
+            <p class="status" id="mouseOverStatus">Status: Ready</p>
+        </div>
+
+        <!-- Mouse Out Event -->
+        <div class="event-box" id="mouseOutBox">
+            <h3>Mouse Out Event</h3>
+            <p>Hover over me and then move away!</p>
+            <p class="status" id="mouseOutStatus">Status: Ready</p>
+        </div>
+
+        <!-- Combined Mouse Enter/Leave -->
+        <div class="event-box" id="combinedBox">
+            <h3>Mouse Enter & Leave Combined</h3>
+            <p>Watch the background change on hover!</p>
+            <p class="status" id="combinedStatus">Status: Ready</p>
+        </div>
+
+        <!-- Event Log -->
+        <div class="log-container">
+            <h3>Event Log</h3>
+            <div id="eventLog"></div>
+            <button id="clearLog">Clear Log</button>
+        </div>
+    </div>
+
+    <script>
+        // Get all elements
+        const clickBox = document.getElementById('clickBox');
+        const doubleClickBox = document.getElementById('doubleClickBox');
+        const rightClickBox = document.getElementById('rightClickBox');
+        const leftClickBox = document.getElementById('leftClickBox');
+        const mouseOverBox = document.getElementById('mouseOverBox');
+        const mouseOutBox = document.getElementById('mouseOutBox');
+        const combinedBox = document.getElementById('combinedBox');
+        const eventLog = document.getElementById('eventLog');
+        const clearLogBtn = document.getElementById('clearLog');
+
+        // Helper function to log events
+        function logEvent(eventType, element) {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            logEntry.innerHTML = `<span class="timestamp">[${timestamp}]</span> <span class="event-type">${eventType}</span> on <span class="element-name">${element}</span>`;
+            eventLog.appendChild(logEntry);
+            eventLog.scrollTop = eventLog.scrollHeight;
+        }
+
+        // Click Event
+        clickBox.addEventListener('click', function() {
+            this.classList.add('clicked');
+            document.getElementById('clickStatus').textContent = 'Status: Clicked!';
+            logEvent('CLICK', 'Click Box');
+            setTimeout(() => {
+                this.classList.remove('clicked');
+                document.getElementById('clickStatus').textContent = 'Status: Ready';
+            }, 1000);
+        });
+
+        // Double Click Event
+        doubleClickBox.addEventListener('dblclick', function() {
+            this.classList.add('double-clicked');
+            document.getElementById('doubleClickStatus').textContent = 'Status: Double Clicked!';
+            logEvent('DOUBLE CLICK', 'Double Click Box');
+            setTimeout(() => {
+                this.classList.remove('double-clicked');
+                document.getElementById('doubleClickStatus').textContent = 'Status: Ready';
+            }, 1500);
+        });
+
+        // Right Click Event (Context Menu)
+        rightClickBox.addEventListener('contextmenu', function(e) {
+            e.preventDefault(); // Prevent default context menu
+            this.classList.add('right-clicked');
+            document.getElementById('rightClickStatus').textContent = 'Status: Right Clicked!';
+            logEvent('RIGHT CLICK', 'Right Click Box');
+            setTimeout(() => {
+                this.classList.remove('right-clicked');
+                document.getElementById('rightClickStatus').textContent = 'Status: Ready';
+            }, 1000);
+        });
+
+        // Left Click Event (using mousedown to distinguish)
+        leftClickBox.addEventListener('mousedown', function(e) {
+            if (e.button === 0) { // Left mouse button
+                this.classList.add('left-clicked');
+                document.getElementById('leftClickStatus').textContent = 'Status: Left Clicked!';
+                logEvent('LEFT CLICK', 'Left Click Box');
+                setTimeout(() => {
+                    this.classList.remove('left-clicked');
+                    document.getElementById('leftClickStatus').textContent = 'Status: Ready';
+                }, 1000);
+            }
+        });
+
+        // Mouse Over Event
+        mouseOverBox.addEventListener('mouseover', function() {
+            this.classList.add('mouse-over');
+            document.getElementById('mouseOverStatus').textContent = 'Status: Mouse Over!';
+            logEvent('MOUSE OVER', 'Mouse Over Box');
+        });
+
+        // Mouse Out Event
+        mouseOutBox.addEventListener('mouseover', function() {
+            this.classList.add('mouse-over');
+            document.getElementById('mouseOutStatus').textContent = 'Status: Mouse Over!';
+        });
+
+        mouseOutBox.addEventListener('mouseout', function() {
+            this.classList.remove('mouse-over');
+            this.classList.add('mouse-out');
+            document.getElementById('mouseOutStatus').textContent = 'Status: Mouse Out!';
+            logEvent('MOUSE OUT', 'Mouse Out Box');
+            setTimeout(() => {
+                this.classList.remove('mouse-out');
+                document.getElementById('mouseOutStatus').textContent = 'Status: Ready';
+            }, 1000);
+        });
+
+        // Combined Mouse Enter and Leave
+        combinedBox.addEventListener('mouseenter', function() {
+            this.classList.add('mouse-enter');
+            document.getElementById('combinedStatus').textContent = 'Status: Mouse Entered!';
+            logEvent('MOUSE ENTER', 'Combined Box');
+        });
+
+        combinedBox.addEventListener('mouseleave', function() {
+            this.classList.remove('mouse-enter');
+            this.classList.add('mouse-leave');
+            document.getElementById('combinedStatus').textContent = 'Status: Mouse Left!';
+            logEvent('MOUSE LEAVE', 'Combined Box');
+            setTimeout(() => {
+                this.classList.remove('mouse-leave');
+                document.getElementById('combinedStatus').textContent = 'Status: Ready';
+            }, 500);
+        });
+
+        // Clear log functionality
+        clearLogBtn.addEventListener('click', function() {
+            eventLog.innerHTML = '';
+            logEvent('LOG CLEARED', 'System');
+        });
+
+        // Initial log entry
+        logEvent('PAGE LOADED', 'System');
+    </script>
+</body>
+</html>

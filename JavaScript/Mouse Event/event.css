@@ -1,0 +1,351 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Event Box Styles */
+.event-box {
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.event-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.event-box:hover::before {
+    left: 100%;
+}
+
+.event-box h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+}
+
+.event-box p {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.status {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #f0f0f0;
+    display: inline-block;
+}
+
+/* Click Event Styles */
+#clickBox:hover {
+    border-color: #4CAF50;
+    transform: translateY(-2px);
+}
+
+.clicked {
+    background: #4CAF50 !important;
+    color: white !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3) !important;
+}
+
+.clicked h3,
+.clicked p {
+    color: white !important;
+}
+
+/* Double Click Event Styles */
+#doubleClickBox:hover {
+    border-color: #2196F3;
+    transform: translateY(-2px);
+}
+
+.double-clicked {
+    background: #2196F3 !important;
+    color: white !important;
+    transform: scale(1.1) rotate(10deg) !important;
+    box-shadow: 0 15px 30px rgba(33, 150, 243, 0.4) !important;
+}
+
+.double-clicked h3,
+.double-clicked p {
+    color: white !important;
+}
+
+/* Right Click Event Styles */
+#rightClickBox:hover {
+    border-color: #FF9800;
+    transform: translateY(-2px);
+}
+
+.right-clicked {
+    background: #FF9800 !important;
+    color: white !important;
+    transform: scale(1.05) skew(-5deg) !important;
+    box-shadow: 0 10px 25px rgba(255, 152, 0, 0.3) !important;
+}
+
+.right-clicked h3,
+.right-clicked p {
+    color: white !important;
+}
+
+/* Left Click Event Styles */
+#leftClickBox:hover {
+    border-color: #9C27B0;
+    transform: translateY(-2px);
+}
+
+.left-clicked {
+    background: #9C27B0 !important;
+    color: white !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 10px 25px rgba(156, 39, 176, 0.3) !important;
+    border-radius: 20px !important;
+}
+
+.left-clicked h3,
+.left-clicked p {
+    color: white !important;
+}
+
+/* Mouse Over Event Styles */
+#mouseOverBox:hover {
+    border-color: #E91E63;
+    transform: translateY(-2px);
+}
+
+.mouse-over {
+    background: linear-gradient(45deg, #E91E63, #F06292) !important;
+    color: white !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3) !important;
+}
+
+.mouse-over h3,
+.mouse-over p {
+    color: white !important;
+}
+
+/* Mouse Out Event Styles */
+#mouseOutBox:hover {
+    border-color: #607D8B;
+    transform: translateY(-2px);
+}
+
+.mouse-out {
+    background: #607D8B !important;
+    color: white !important;
+    transform: scale(0.98) !important;
+    opacity: 0.8 !important;
+    box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+.mouse-out h3,
+.mouse-out p {
+    color: white !important;
+}
+
+/* Combined Mouse Enter/Leave Styles */
+#combinedBox:hover {
+    border-color: #795548;
+    transform: translateY(-2px);
+}
+
+.mouse-enter {
+    background: linear-gradient(135deg, #795548, #A1887F) !important;
+    color: white !important;
+    transform: scale(1.03) !important;
+    box-shadow: 0 12px 25px rgba(121, 85, 72, 0.3) !important;
+    border-radius: 15px !important;
+}
+
+.mouse-enter h3,
+.mouse-enter p {
+    color: white !important;
+}
+
+.mouse-leave {
+    background: #FFCDD2 !important;
+    transform: scale(0.97) !important;
+    opacity: 0.7 !important;
+}
+
+/* Event Log Styles */
+.log-container {
+    margin-top: 40px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+}
+
+.log-container h3 {
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#eventLog {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    height: 200px;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.log-entry {
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+}
+
+.timestamp {
+    color: #666;
+    font-weight: normal;
+}
+
+.event-type {
+    color: #007bff;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.element-name {
+    color: #28a745;
+    font-weight: bold;
+}
+
+#clearLog {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+#clearLog:hover {
+    background: #c82333;
+    transform: translateY(-1px);
+}
+
+#clearLog:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .event-box {
+        padding: 15px;
+        margin: 15px 0;
+    }
+    
+    .event-box h3 {
+        font-size: 1.2em;
+    }
+}
+
+/* Animation Keyframes */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+    50% { box-shadow: 0 5px 25px rgba(0, 123, 255, 0.4); }
+    100% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+}
+
+/* Additional hover effects */
+.event-box:hover {
+    animation: glow 2s infinite;
+}
+
+/* Scrollbar Styling for Event Log */
+#eventLog::-webkit-scrollbar {
+    width: 8px;
+}
+
+#eventLog::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+#eventLog::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+#eventLog::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
