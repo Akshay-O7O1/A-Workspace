@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Mouse Functions</title>
+</head>
+
+<body>
+    <h1>5 Basic Mouse Functions - Beginner Level</h1>
+
+    <h2>Try these 5 different mouse actions:</h2>
+
+    <!-- Mouse Over and Mouse Out Box -->
+    <div onmouseover="mouseOverFunction()" onmouseout="mouseOutFunction()">
+        <h3>Box 1: Mouse Over and Mouse Out</h3>
+        <p>Move your mouse over this box and then move it away</p>
+        <p id="hoverMessage">Hover message will appear here</p>
+    </div>
+    <br>
+
+    <!-- Click Box -->
+    <div onclick="clickFunction()">
+        <h3>Box 2: Click Function</h3>
+        <p>Click anywhere in this box</p>
+        <p id="clickMessage">Click message will appear here</p>
+    </div>
+    <br>
+
+    <!-- Double Click Box -->
+    <div ondblclick="doubleClickFunction()">
+        <h3>Box 3: Double Click Function</h3>
+        <p>Double click anywhere in this box</p>
+        <p id="doubleClickMessage">Double click message will appear here</p>
+    </div>
+    <br>
+
+    <!-- Right Click Box -->
+    <div oncontextmenu="rightClickFunction(event)">
+        <h3>Box 4: Right Click Function</h3>
+        <p>Right click anywhere in this box</p>
+        <p id="rightClickMessage">Right click message will appear here</p>
+    </div>
+    <br>
+
+    <!-- Combined Test Box -->
+    <div onclick="clickFunction()" ondblclick="doubleClickFunction()" oncontextmenu="rightClickFunction(event)"
+        onmouseover="mouseOverFunction()" onmouseout="mouseOutFunction()">
+        <h3>Box 5: All Functions Combined</h3>
+        <p>Try all mouse actions on this box!</p>
+        <p id="combinedMessage">Messages will appear here</p>
+    </div>
+
+    <script>
+        // Function 1: Mouse Over Function
+        function mouseOverFunction() {
+            console.log("Mouse Over Function executed!");
+            document.getElementById("hoverMessage").innerHTML = "Mouse is over the box!";
+            alert("Mouse Over: You moved your mouse over the box!");
+        }
+
+        // Function 2: Mouse Out Function
+        function mouseOutFunction() {
+            console.log("Mouse Out Function executed!");
+            document.getElementById("hoverMessage").innerHTML = "Mouse left the box!";
+            alert("Mouse Out: You moved your mouse away from the box!");
+        }
+
+        // Function 3: Click Function
+        function clickFunction() {
+            console.log("Click Function executed!");
+            document.getElementById("clickMessage").innerHTML = "You clicked the box! Time: " + new Date().toLocaleTimeString();
+            document.getElementById("combinedMessage").innerHTML = "Single Click detected!";
+            alert("Click: You clicked the box!");
+        }
+
+        // Function 4: Double Click Function
+        function doubleClickFunction() {
+            console.log("Double Click Function executed!");
+            document.getElementById("doubleClickMessage").innerHTML = "You double clicked the box! Time: " + new Date().toLocaleTimeString();
+            document.getElementById("combinedMessage").innerHTML = "Double Click detected!";
+            alert("Double Click: You double clicked the box!");
+        }
+
+        // Function 5: Right Click Function
+        function rightClickFunction(event) {
+            // Prevent the default context menu from appearing
+            event.preventDefault();
+
+            console.log("Right Click Function executed!");
+            document.getElementById("rightClickMessage").innerHTML = "You right clicked the box! Time: " + new Date().toLocaleTimeString();
+            document.getElementById("combinedMessage").innerHTML = "Right Click detected!";
+            alert("Right Click: You right clicked the box!");
+        }
+
+        // Function to show when page loads
+        function pageReady() {
+            console.log("Page loaded! All 5 mouse functions are ready to use.");
+            console.log("Functions available: mouseOver, mouseOut, click, doubleClick, rightClick");
+        }
+
+        // Run pageReady function when page loads
+        window.onload = pageReady;
+
+    </script>
+</body>
+
+</html>

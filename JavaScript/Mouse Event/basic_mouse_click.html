@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Mouse Click Functions</title>
+</head>
+<body>
+    <h1>Basic Mouse Click Functions - Beginner Level</h1>
+    
+    <h2>Click the buttons below to see the functions work:</h2>
+    
+    <!-- Simple Click Button -->
+    <button onclick="simpleClick()">Simple Click</button>
+    <br><br>
+    
+    <!-- Click with Message -->
+    <button onclick="clickWithMessage()">Click with Custom Message</button>
+    <br><br>
+    
+    <!-- Click Counter -->
+    <button onclick="countClicks()">Click Counter</button>
+    <p>You have clicked the counter button <span id="clickCount">0</span> times</p>
+    <br>
+    
+    <!-- Click to Change Text -->
+    <button onclick="changeText()">Click to Change Text</button>
+    <p id="textToChange">This text will change when you click the button above</p>
+    <br>
+    
+    <!-- Click to Show/Hide -->
+    <button onclick="toggleVisibility()">Show/Hide Text</button>
+    <p id="toggleText">This text can be hidden or shown</p>
+    <br>
+    
+    <!-- Click with User Input -->
+    <button onclick="getUserName()">Click to Enter Your Name</button>
+    <p id="greeting"></p>
+    <br>
+    
+    <!-- Multiple Function Calls -->
+    <button onclick="multipleActions()">Multiple Actions</button>
+    <p id="multipleResult"></p>
+
+    <script>
+        // Global variable for click counter
+        var clickCounter = 0;
+        
+        // Function 1: Simple click function
+        function simpleClick() {
+            alert("Hello! You clicked the button!");
+            console.log("Simple click function executed");
+        }
+        
+        // Function 2: Click with custom message
+        function clickWithMessage() {
+            alert("Welcome to JavaScript Functions!");
+            console.log("Custom message function executed");
+            document.write("<p>Function executed at: " + new Date() + "</p>");
+        }
+        
+        // Function 3: Click counter function
+        function countClicks() {
+            clickCounter = clickCounter + 1;
+            document.getElementById("clickCount").innerHTML = clickCounter;
+            console.log("Button clicked " + clickCounter + " times");
+            
+            if (clickCounter == 5) {
+                alert("Wow! You've clicked 5 times!");
+            }
+        }
+        
+        // Function 4: Change text function
+        function changeText() {
+            var textElement = document.getElementById("textToChange");
+            textElement.innerHTML = "Text changed! Current time: " + new Date().toLocaleTimeString();
+            textElement.style.color = "blue";
+            console.log("Text changed successfully");
+        }
+        
+        // Function 5: Toggle visibility function
+        function toggleVisibility() {
+            var element = document.getElementById("toggleText");
+            
+            if (element.style.display === "none") {
+                element.style.display = "block";
+                console.log("Text is now visible");
+            } else {
+                element.style.display = "none";
+                console.log("Text is now hidden");
+            }
+        }
+        
+        // Function 6: Get user input function
+        function getUserName() {
+            var userName = prompt("Please enter your name:");
+            
+            if (userName != null && userName != "") {
+                document.getElementById("greeting").innerHTML = "Hello, " + userName + "! Nice to meet you!";
+                console.log("User entered name: " + userName);
+            } else {
+                document.getElementById("greeting").innerHTML = "You didn't enter a name!";
+                console.log("User cancelled or entered empty name");
+            }
+        }
+        
+        // Function 7: Multiple actions in one function
+        function multipleActions() {
+            // Action 1: Print to console
+            console.log("Multiple actions function started");
+            
+            // Action 2: Change background color
+            document.body.style.backgroundColor = getRandomColor();
+            
+            // Action 3: Update text
+            document.getElementById("multipleResult").innerHTML = "Background changed! Time: " + new Date().toLocaleTimeString();
+            
+            // Action 4: Show alert
+            alert("Multiple actions completed!");
+            
+            console.log("Multiple actions function completed");
+        }
+        
+        // Helper function to get random color
+        function getRandomColor() {
+            var colors = ["lightblue", "lightgreen", "lightyellow", "lightpink", "lightgray", "white"];
+            var randomIndex = Math.floor(Math.random() * colors.length);
+            return colors[randomIndex];
+        }
+        
+        // Function that runs when page loads
+        function pageLoaded() {
+            console.log("Page loaded successfully!");
+            console.log("All functions are ready to use");
+        }
+        
+        // Call pageLoaded function when page loads
+        window.onload = pageLoaded;
+        
+        // Additional simple functions for learning
+        
+        // Function to print current date
+        function printCurrentDate() {
+            var today = new Date();
+            console.log("Current date: " + today);
+            return today;
+        }
+        
+        // Function to add two numbers
+        function addNumbers(a, b) {
+            var result = a + b;
+            console.log(a + " + " + b + " = " + result);
+            return result;
+        }
+        
+        // Function to check if number is even or odd
+        function checkEvenOdd(number) {
+            if (number % 2 == 0) {
+                console.log(number + " is even");
+                return "even";
+            } else {
+                console.log(number + " is odd");
+                return "odd";
+            }
+        }
+        
+        // You can test these functions in the browser console:
+        // printCurrentDate()
+        // addNumbers(5, 3)
+        // checkEvenOdd(7)
+        
+    </script>
+    
+    <hr>
+    <h3>Instructions for Beginners:</h3>
+    <ul>
+        <li>Click each button to see different functions in action</li>
+        <li>Open browser console (F12) to see console.log messages</li>
+        <li>Each function demonstrates different JavaScript concepts</li>
+        <li>Try clicking the counter button multiple times</li>
+        <li>The toggle button will hide/show text</li>
+        <li>Some functions use alert() and prompt() for user interaction</li>
+    </ul>
+    
+    <h3>What you'll learn:</h3>
+    <ul>
+        <li>How to create basic functions</li>
+        <li>How to use onclick events</li>
+        <li>How to manipulate HTML elements</li>
+        <li>How to use variables and counters</li>
+        <li>How to use console.log for debugging</li>
+        <li>How to get user input with prompt()</li>
+        <li>How to use if/else statements</li>
+    </ul>
+</body>
+</html>
