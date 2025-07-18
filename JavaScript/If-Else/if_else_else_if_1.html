@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If-Else Condition Example</title>
+</head>
+<link rel="stylesheet" type="text/css" href="if_else.css">
+<body>
+    <div class="container">
+        <h1>If-Else Condition Demo</h1>
+
+        <h3>Age Checker</h3>
+        <input type="number" id="ageInput" placeholder="Enter your age" min="0" max="120">
+        <button onclick="checkAge()">Check Age Category</button>
+        <div id="ageResult" class="result" style="display: none;"></div>
+
+        <script>
+            // Age checker function
+            function checkAge() {
+                const age = parseInt(document.getElementById('ageInput').value);
+                const resultDiv = document.getElementById('ageResult');
+
+                if (isNaN(age) || age < 0) {
+                    resultDiv.innerHTML = "Please enter a valid age!";
+                    resultDiv.className = "result negative";
+                } else if (age < 13) {
+                    resultDiv.innerHTML = "You are a child 👶";
+                    resultDiv.className = "result neutral";
+                } else if (age < 20) {
+                    resultDiv.innerHTML = "You are a teenager 🧑";
+                    resultDiv.className = "result positive";
+                } else if (age < 60) {
+                    resultDiv.innerHTML = "You are an adult 👨‍💼";
+                    resultDiv.className = "result positive";
+                } else {
+                    resultDiv.innerHTML = "You are a senior 👴";
+                    resultDiv.className = "result neutral";
+                }
+
+                resultDiv.style.display = "block";
+            }
+
+            // Add enter key support
+            document.addEventListener('keypress', function (event) {
+                if (event.key === 'Enter') {
+                    const activeElement = document.activeElement;
+                }
+            });
+        </script>
+
+</body>
+
+</html>

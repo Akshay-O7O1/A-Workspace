@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Operators in JavaScript</title>
+    <link rel="stylesheet" href="operators-style.css">
+</head>
+<body class="logical">
+    <div class="container">
+        <h1>Logical Operators in JavaScript</h1>
+        
+        <div class="operator-section">
+            <h3>Logical AND (&&)</h3>
+            <p>Returns true if both operands are true</p>
+            <div class="code">true && true = true<br>true && false = false</div>
+            <button onclick="demonstrateAND()">Test AND Operator</button>
+            <div id="andResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Logical OR (||)</h3>
+            <p>Returns true if at least one operand is true</p>
+            <div class="code">true || false = true<br>false || false = false</div>
+            <button onclick="demonstrateOR()">Test OR Operator</button>
+            <div id="orResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Logical NOT (!)</h3>
+            <p>Returns the opposite boolean value</p>
+            <div class="code">!true = false<br>!false = true</div>
+            <button onclick="demonstrateNOT()">Test NOT Operator</button>
+            <div id="notResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Nullish Coalescing (??)</h3>
+            <p>Returns the right operand if the left is null or undefined</p>
+            <div class="code">null ?? "default" = "default"<br>"value" ?? "default" = "value"</div>
+            <button onclick="demonstrateNullish()">Test Nullish Coalescing</button>
+            <div id="nullishResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Short-Circuit Evaluation</h3>
+            <p>Logical operators can be used for conditional execution</p>
+            <button onclick="demonstrateShortCircuit()">Test Short-Circuit</button>
+            <div id="shortCircuitResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Complex Logical Expressions</h3>
+            <p>Combining multiple logical operators</p>
+            <button onclick="demonstrateComplex()">Test Complex Logic</button>
+            <div id="complexResult" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function demonstrateAND() {
+            let result1 = true && true;
+            let result2 = true && false;
+            let result3 = false && true;
+            let result4 = false && false;
+            
+            document.getElementById('andResult').innerHTML = 
+                `true && true = ${result1}<br>` +
+                `true && false = ${result2}<br>` +
+                `false && true = ${result3}<br>` +
+                `false && false = ${result4}`;
+        }
+
+        function demonstrateOR() {
+            let result1 = true || true;
+            let result2 = true || false;
+            let result3 = false || true;
+            let result4 = false || false;
+            
+            document.getElementById('orResult').innerHTML = 
+                `true || true = ${result1}<br>` +
+                `true || false = ${result2}<br>` +
+                `false || true = ${result3}<br>` +
+                `false || false = ${result4}`;
+        }
+
+        function demonstrateNOT() {
+            let result1 = !true;
+            let result2 = !false;
+            let result3 = !(5 > 3);
+            let result4 = !(2 > 10);
+            
+            document.getElementById('notResult').innerHTML = 
+                `!true = ${result1}<br>` +
+                `!false = ${result2}<br>` +
+                `!(5 > 3) = ${result3}<br>` +
+                `!(2 > 10) = ${result4}`;
+        }
+
+        function demonstrateNullish() {
+            let value1 = null ?? "default value";
+            let value2 = undefined ?? "fallback";
+            let value3 = "actual value" ?? "default";
+            let value4 = 0 ?? "zero fallback";
+            
+            document.getElementById('nullishResult').innerHTML = 
+                `null ?? "default value" = "${value1}"<br>` +
+                `undefined ?? "fallback" = "${value2}"<br>` +
+                `"actual value" ?? "default" = "${value3}"<br>` +
+                `0 ?? "zero fallback" = "${value4}"`;
+        }
+
+        function demonstrateShortCircuit() {
+            let user = { name: "John", age: 25 };
+            let message1 = user && user.name && `Hello, ${user.name}!`;
+            
+            let emptyUser = null;
+            let message2 = emptyUser && emptyUser.name && `Hello, ${emptyUser.name}!`;
+            
+            let defaultName = user.nickname || "Guest";
+            
+            document.getElementById('shortCircuitResult').innerHTML = 
+                `With user object: "${message1}"<br>` +
+                `With null user: "${message2}"<br>` +
+                `Default name: "${defaultName}"`;
+        }
+
+        function demonstrateComplex() {
+            let age = 25;
+            let hasLicense = true;
+            let hasInsurance = true;
+            let hasExperience = false;
+            
+            let canDrive = age >= 18 && hasLicense && hasInsurance;
+            let canRentCar = canDrive && (age >= 25 || hasExperience);
+            let needsSupervision = age < 18 || !hasLicense || (!hasInsurance && !hasExperience);
+            
+            document.getElementById('complexResult').innerHTML = 
+                `Age: ${age}, License: ${hasLicense}, Insurance: ${hasInsurance}, Experience: ${hasExperience}<br>` +
+                `Can drive: ${canDrive}<br>` +
+                `Can rent car: ${canRentCar}<br>` +
+                `Needs supervision: ${needsSupervision}`;
+        }
+    </script>
+</body>
+</html>

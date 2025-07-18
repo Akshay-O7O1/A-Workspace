@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Functions - JavaScript Demo</title>
+    <link rel="stylesheet" href="common-styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Arrow Functions</h1>
+            <p>Modern ES6 syntax for cleaner function expressions</p>
+        </div>
+        
+        <div class="content">
+            <div class="demo-section">
+                <h3>Basic Arrow Function Syntax</h3>
+                <div class="code-block">
+// Single parameter, single expression
+const square = x => x * x;
+
+// Multiple parameters
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+
+// No parameters
+const getRandomNumber = () => Math.floor(Math.random() * 100);
+                </div>
+                <div class="input-group">
+                    <input type="number" id="arrowNum1" placeholder="First Number" value="8">
+                    <input type="number" id="arrowNum2" placeholder="Second Number" value="3">
+                    <button class="btn" onclick="testBasicArrow()">Test Basic Arrow</button>
+                </div>
+                <div class="output" id="basicArrowOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Arrow Functions with Block Body</h3>
+                <div class="code-block">
+const calculateBMI = (weight, height) => {
+    const bmi = weight / (height * height);
+    let category;
+    
+    if (bmi < 18.5) category = "Underweight";
+    else if (bmi < 25) category = "Normal";
+    else if (bmi < 30) category = "Overweight";
+    else category = "Obese";
+    
+    return { bmi: bmi.toFixed(2), category };
+};
+                </div>
+                <div class="input-group">
+                    <input type="number" id="weight" placeholder="Weight (kg)" value="70" step="0.1">
+                    <input type="number" id="height" placeholder="Height (m)" value="1.75" step="0.01">
+                    <button class="btn" onclick="calculateBMIDemo()">Calculate BMI</button>
+                </div>
+                <div class="output" id="bmiOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Arrow Functions with Array Methods</h3>
+                <div class="code-block">
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const doubled = numbers.map(n => n * 2);
+const evens = numbers.filter(n => n % 2 === 0);
+const sum = numbers.reduce((acc, n) => acc + n, 0);
+const hasLargeNumber = numbers.some(n => n > 8);
+                </div>
+                <div class="input-group">
+                    <input type="text" id="arrayInput" placeholder="Enter numbers (comma separated)" value="1,2,3,4,5,6,7,8,9,10">
+                    <button class="btn" onclick="processWithArrows()">Process with Arrows</button>
+                </div>
+                <div class="output" id="arrayArrowOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Arrow Functions for String Processing</h3>
+                <div class="code-block">
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+const reverseString = str => str.split('').reverse().join('');
+const countVowels = str => (str.match(/[aeiouAEIOU]/g) || []).length;
+const isPalindrome = str => {
+    const cleaned = str.toLowerCase().replace(/[^a-z]/g, '');
+    return cleaned === cleaned.split('').reverse().join('');
+};
+                </div>
+                <div class="input-group">
+                    <input type="text" id="stringInput" placeholder="Enter a string" value="Hello World">
+                    <button class="btn" onclick="processString()">Process String</button>
+                </div>
+                <div class="output" id="stringOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Arrow Functions with setTimeout</h3>
+                <div class="code-block">
+const startCountdown = (seconds) => {
+    const countdown = () => {
+        if (seconds > 0) {
+            updateCountdown(`Countdown: ${seconds}`);
+            seconds--;
+            setTimeout(countdown, 1000);
+        } else {
+            updateCountdown("Time's up! 🎉");
+        }
+    };
+    countdown();
+};
+                </div>
+                <div class="input-group">
+                    <input type="number" id="countdownInput" placeholder="Seconds" value="5" min="1" max="10">
+                    <button class="btn" onclick="startTimer()">Start Countdown</button>
+                </div>
+                <div class="output" id="countdownOutput">Ready to start countdown...</div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="expression-functions.html" class="nav-link">← Expression Functions</a>
+            <a href="iife.html" class="nav-link">IIFE →</a>
+            <a href="user-defined-functions.html" class="nav-link">User Defined</a>
+            <a href="higher-order-functions.html" class="nav-link">Higher Order</a>
+        </div>
+    </div>
+
+    <script>
+        // Basic Arrow Functions
+        const square = x => x * x;
+        const add = (a, b) => a + b;
+        const subtract = (a, b) => a - b;
+        const getRandomNumber = () => Math.floor(Math.random() * 100);
+
+        // Arrow Function with Block Body
+        const calculateBMI = (weight, height) => {
+            const bmi = weight / (height * height);
+            let category;
+            
+            if (bmi < 18.5) category = "Underweight";
+            else if (bmi < 25) category = "Normal";
+            else if (bmi < 30) category = "Overweight";
+            else category = "Obese";
+            
+            return { bmi: bmi.toFixed(2), category };
+        };
+
+        // String Processing Arrow Functions
+        const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+        const reverseString = str => str.split('').reverse().join('');
+        const countVowels = str => (str.match(/[aeiouAEIOU]/g) || []).length;
+        const isPalindrome = str => {
+            const cleaned = str.toLowerCase().replace(/[^a-z]/g, '');
+            return cleaned === cleaned.split('').reverse().join('');
+        };
+
+        // Demo Functions
+        const testBasicArrow = () => {
+            const num1 = parseFloat(document.getElementById('arrowNum1').value);
+            const num2 = parseFloat(document.getElementById('arrowNum2').value);
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('basicArrowOutput').innerHTML = "Please enter valid numbers!";
+                return;
+            }
+            
+            const squareResult = square(num1);
+            const addResult = add(num1, num2);
+            const subtractResult = subtract(num1, num2);
+            const randomNum = getRandomNumber();
+            
+            document.getElementById('basicArrowOutput').innerHTML = 
+                `Square of ${num1}: ${squareResult}<br>
+                 ${num1} + ${num2} = ${addResult}<br>
+                 ${num1} - ${num2} = ${subtractResult}<br>
+                 Random number: ${randomNum}`;
+        };
+
+        const calculateBMIDemo = () => {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                document.getElementById('bmiOutput').innerHTML = "Please enter valid weight and height!";
+                return;
+            }
+            
+            const result = calculateBMI(weight, height);
+            document.getElementById('bmiOutput').innerHTML = 
+                `BMI: ${result.bmi}<br>Category: ${result.category}`;
+        };
+
+        const processWithArrows = () => {
+            const input = document.getElementById('arrayInput').value;
+            
+            try {
+                const numbers = input.split(',').map(n => parseFloat(n.trim()));
+                
+                if (numbers.some(isNaN)) {
+                    document.getElementById('arrayArrowOutput').innerHTML = "Please enter valid numbers!";
+                    return;
+                }
+                
+                const doubled = numbers.map(n => n * 2);
+                const evens = numbers.filter(n => n % 2 === 0);
+                const sum = numbers.reduce((acc, n) => acc + n, 0);
+                const hasLargeNumber = numbers.some(n => n > 8);
+                
+                document.getElementById('arrayArrowOutput').innerHTML = 
+                    `Original: [${numbers.join(', ')}]<br>
+                     Doubled: [${doubled.join(', ')}]<br>
+                     Even numbers: [${evens.join(', ')}]<br>
+                     Sum: ${sum}<br>
+                     Has number > 8: ${hasLargeNumber}`;
+                     
+            } catch (error) {
+                document.getElementById('arrayArrowOutput').innerHTML = "Error processing numbers!";
+            }
+        };
+
+        const processString = () => {
+            const str = document.getElementById('stringInput').value;
+            
+            if (!str.trim()) {
+                document.getElementById('stringOutput').innerHTML = "Please enter a string!";
+                return;
+            }
+            
+            const capitalized = capitalize(str);
+            const reversed = reverseString(str);
+            const vowelCount = countVowels(str);
+            const palindrome = isPalindrome(str);
+            
+            document.getElementById('stringOutput').innerHTML = 
+                `Original: "${str}"<br>
+                 Capitalized: "${capitalized}"<br>
+                 Reversed: "${reversed}"<br>
+                 Vowel count: ${vowelCount}<br>
+                 Is palindrome: ${palindrome}`;
+        };
+
+        const updateCountdown = (message) => {
+            document.getElementById('countdownOutput').innerHTML = message;
+        };
+
+        const startTimer = () => {
+            let seconds = parseInt(document.getElementById('countdownInput').value);
+            
+            if (isNaN(seconds) || seconds <= 0) {
+                document.getElementById('countdownOutput').innerHTML = "Please enter a valid number of seconds!";
+                return;
+            }
+            
+            const countdown = () => {
+                if (seconds > 0) {
+                    updateCountdown(`Countdown: ${seconds}`);
+                    seconds--;
+                    setTimeout(countdown, 1000);
+                } else {
+                    updateCountdown("Time's up! 🎉");
+                }
+            };
+            countdown();
+        };
+
+        // Initialize with default values
+        window.addEventListener('DOMContentLoaded', () => {
+            testBasicArrow();
+            calculateBMIDemo();
+            processWithArrows();
+            processString();
+        });
+    </script>
+</body>
+</html>

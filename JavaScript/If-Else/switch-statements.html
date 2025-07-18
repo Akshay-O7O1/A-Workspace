@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Statements - JavaScript Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .demo-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+
+        .demo-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            border-bottom: 2px solid #4ecdc4;
+            padding-bottom: 5px;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .output {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: monospace;
+            min-height: 50px;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        .input-group input, .input-group select {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        .day-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .day-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .day-btn:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Switch Statements</h1>
+            <p>Multiple condition handling with switch-case in JavaScript</p>
+        </div>
+        
+        <div class="content">
+            <div class="demo-section">
+                <h3>Basic Switch Statement</h3>
+                <div class="code-block">
+function getDayName(dayNumber) {
+    switch (dayNumber) {
+        case 1:
+            return "Monday";
+        case 2:
+            return "Tuesday";
+        case 3:
+            return "Wednesday";
+        case 4:
+            return "Thursday";
+        case 5:
+            return "Friday";
+        case 6:
+            return "Saturday";
+        case 7:
+            return "Sunday";
+        default:
+            return "Invalid day number";
+    }
+}
+                </div>
+                <div class="input-group">
+                    <input type="number" id="dayInput" placeholder="Enter day number (1-7)" value="1" min="1" max="7">
+                    <button class="btn" onclick="getDayDemo()">Get Day Name</button>
+                </div>
+                <div class="day-buttons">
+                    <button class="day-btn" onclick="setDay(1)">1</button>
+                    <button class="day-btn" onclick="setDay(2)">2</button>
+                    <button class="day-btn" onclick="setDay(3)">3</button>
+                    <button class="day-btn" onclick="setDay(4)">4</button>
+                    <button class="day-btn" onclick="setDay(5)">5</button>
+                    <button class="day-btn" onclick="setDay(6)">6</button>
+                    <button class="day-btn" onclick="setDay(7)">7</button>
+                </div>
+                <div class="output" id="dayOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Grade Calculator with Switch</h3>
+                <div class="code-block">
+function getGradeInfo(grade) {
+    switch (grade.toUpperCase()) {
+        case 'A':
+            return "Excellent! Score: 90-100%";
+        case 'B':
+            return "Good! Score: 80-89%";
+        case 'C':
+            return "Average! Score: 70-79%";
+        case 'D':
+            return "Below Average! Score: 60-69%";
+        case 'F':
+            return "Fail! Score: Below 60%";
+        default:
+            return "Invalid grade entered";
+    }
+}
+                </div>
+                <div class="input-group">
+                    <select id="gradeSelect">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="F">F</option>
+                    </select>
+                    <button class="btn" onclick="getGradeDemo()">Get Grade Info</button>
+                </div>
+                <div class="output" id="gradeOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Calculator with Switch</h3>
+                <div class="code-block">
+function calculate(num1, num2, operator) {
+    switch (operator) {
+        case '+':
+            return `${num1} + ${num2} = ${num1 + num2}`;
+        case '-':
+            return `${num1} - ${num2} = ${num1 - num2}`;
+        case '*':
+            return `${num1} × ${num2} = ${num1 * num2}`;
+        case '/':
+            return num2 !== 0 ? `${num1} ÷ ${num2} = ${num1 / num2}` : "Cannot divide by zero";
+        case '%':
+            return `${num1} % ${num2} = ${num1 % num2}`;
+        case '**':
+            return `${num1} ^ ${num2} = ${Math.pow(num1, num2)}`;
+        default:
+            return "Invalid operator";
+    }
+}
+                </div>
+                <div class="input-group">
+                    <input type="number" id="calc1" placeholder="First number" value="10">
+                    <select id="operatorSelect">
+                        <option value="+">+ (Add)</option>
+                        <option value="-">- (Subtract)</option>
+                        <option value="*">× (Multiply)</option>
+                        <option value="/">÷ (Divide)</option>
+                        <option value="%">% (Modulus)</option>
+                        <option value="**">^ (Power)</option>
+                    </select>
+                    <input type="number" id="calc2" placeholder="Second number" value="5">
+                    <button class="btn" onclick="calculateDemo()">Calculate</button>
+                </div>
+                <div class="output" id="calcOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Season Detector</h3>
+                <div class="code-block">
+function getSeason(month) {
+    switch (month) {
+        case 12:
+        case 1:
+        case 2:
+            return "Winter ❄️";
+        case 3:
+        case 4:
+        case 5:
+            return "Spring 🌸";
+        case 6:
+        case 7:
+        case 8:
+            return "Summer ☀️";
+        case 9:
+        case 10:
+        case 11:
+            return "Autumn 🍂";
+        default:
+            return "Invalid month";
+    }
+}
+                </div>
+                <div class="input-group">
+                    <select id="monthSelect">
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <button class="btn" onclick="getSeasonDemo()">Get Season</button>
+                </div>
+                <div class="output" id="seasonOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Traffic Light System</h3>
+                <div class="code-block">
+function getTrafficAction(color) {
+    switch (color.toLowerCase()) {
+        case 'red':
+            return "🔴 STOP! Do not proceed.";
+        case 'yellow':
+        case 'amber':
+            return "🟡 CAUTION! Prepare to stop.";
+        case 'green':
+            return "🟢 GO! Proceed safely.";
+        default:
+            return "Invalid traffic light color";
+    }
+}
+                </div>
+                <div class="input-group">
+                    <select id="colorSelect">
+                        <option value="red">Red</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="green">Green</option>
+                    </select>
+                    <button class="btn" onclick="getTrafficDemo()">Get Action</button>
+                </div>
+                <div class="output" id="trafficOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Programming Language Info</h3>
+                <div class="code-block">
+function getLanguageInfo(language) {
+    switch (language.toLowerCase()) {
+        case 'javascript':
+            return "JavaScript - Dynamic web programming language";
+        case 'python':
+            return "Python - Easy to learn, great for data science";
+        case 'java':
+            return "Java - Object-oriented, platform independent";
+        case 'c++':
+            return "C++ - Powerful system programming language";
+        case 'html':
+            return "HTML - Markup language for web structure";
+        case 'css':
+            return "CSS - Styling language for web design";
+        default:
+            return "Language not found in database";
+    }
+}
+                </div>
+                <div class="input-group">
+                    <input type="text" id="languageInput" placeholder="Enter programming language" value="javascript">
+                    <button class="btn" onclick="getLanguageDemo()">Get Info</button>
+                </div>
+                <div class="output" id="languageOutput"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Switch statement functions
+        function getDayName(dayNumber) {
+            switch (dayNumber) {
+                case 1:
+                    return "Monday";
+                case 2:
+                    return "Tuesday";
+                case 3:
+                    return "Wednesday";
+                case 4:
+                    return "Thursday";
+                case 5:
+                    return "Friday";
+                case 6:
+                    return "Saturday";
+                case 7:
+                    return "Sunday";
+                default:
+                    return "Invalid day number";
+            }
+        }
+
+        function getGradeInfo(grade) {
+            switch (grade.toUpperCase()) {
+                case 'A':
+                    return "Excellent! Score: 90-100%";
+                case 'B':
+                    return "Good! Score: 80-89%";
+                case 'C':
+                    return "Average! Score: 70-79%";
+                case 'D':
+                    return "Below Average! Score: 60-69%";
+                case 'F':
+                    return "Fail! Score: Below 60%";
+                default:
+                    return "Invalid grade entered";
+            }
+        }
+
+        function calculate(num1, num2, operator) {
+            switch (operator) {
+                case '+':
+                    return `${num1} + ${num2} = ${num1 + num2}`;
+                case '-':
+                    return `${num1} - ${num2} = ${num1 - num2}`;
+                case '*':
+                    return `${num1} × ${num2} = ${num1 * num2}`;
+                case '/':
+                    return num2 !== 0 ? `${num1} ÷ ${num2} = ${num1 / num2}` : "Cannot divide by zero";
+                case '%':
+                    return `${num1} % ${num2} = ${num1 % num2}`;
+                case '**':
+                    return `${num1} ^ ${num2} = ${Math.pow(num1, num2)}`;
+                default:
+                    return "Invalid operator";
+            }
+        }
+
+        function getSeason(month) {
+            switch (month) {
+                case 12:
+                case 1:
+                case 2:
+                    return "Winter ❄️";
+                case 3:
+                case 4:
+                case 5:
+                    return "Spring 🌸";
+                case 6:
+                case 7:
+                case 8:
+                    return "Summer ☀️";
+                case 9:
+                case 10:
+                case 11:
+                    return "Autumn 🍂";
+                default:
+                    return "Invalid month";
+            }
+        }
+
+        function getTrafficAction(color) {
+            switch (color.toLowerCase()) {
+                case 'red':
+                    return "🔴 STOP! Do not proceed.";
+                case 'yellow':
+                case 'amber':
+                    return "🟡 CAUTION! Prepare to stop.";
+                case 'green':
+                    return "🟢 GO! Proceed safely.";
+                default:
+                    return "Invalid traffic light color";
+            }
+        }
+
+        function getLanguageInfo(language) {
+            switch (language.toLowerCase()) {
+                case 'javascript':
+                    return "JavaScript - Dynamic web programming language";
+                case 'python':
+                    return "Python - Easy to learn, great for data science";
+                case 'java':
+                    return "Java - Object-oriented, platform independent";
+                case 'c++':
+                    return "C++ - Powerful system programming language";
+                case 'html':
+                    return "HTML - Markup language for web structure";
+                case 'css':
+                    return "CSS - Styling language for web design";
+                default:
+                    return "Language not found in database";
+            }
+        }
+
+        // Demo functions
+        function getDayDemo() {
+            const dayNumber = parseInt(document.getElementById('dayInput').value);
+            const result = getDayName(dayNumber);
+            document.getElementById('dayOutput').innerHTML = `Day ${dayNumber}: ${result}`;
+        }
+
+        function setDay(day) {
+            document.getElementById('dayInput').value = day;
+            getDayDemo();
+        }
+
+        function getGradeDemo() {
+            const grade = document.getElementById('gradeSelect').value;
+            const result = getGradeInfo(grade);
+            document.getElementById('gradeOutput').innerHTML = `Grade ${grade}: ${result}`;
+        }
+
+        function calculateDemo() {
+            const num1 = parseFloat(document.getElementById('calc1').value);
+            const num2 = parseFloat(document.getElementById('calc2').value);
+            const operator = document.getElementById('operatorSelect').value;
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('calcOutput').innerHTML = "Please enter valid numbers!";
+                return;
+            }
+            
+            const result = calculate(num1, num2, operator);
+            document.getElementById('calcOutput').innerHTML = result;
+        }
+
+        function getSeasonDemo() {
+            const month = parseInt(document.getElementById('monthSelect').value);
+            const result = getSeason(month);
+            const monthNames = ["", "January", "February", "March", "April", "May", "June", 
+                              "July", "August", "September", "October", "November", "December"];
+            document.getElementById('seasonOutput').innerHTML = `${monthNames[month]}: ${result}`;
+        }
+
+        function getTrafficDemo() {
+            const color = document.getElementById('colorSelect').value;
+            const result = getTrafficAction(color);
+            document.getElementById('trafficOutput').innerHTML = result;
+        }
+
+        function getLanguageDemo() {
+            const language = document.getElementById('languageInput').value;
+            const result = getLanguageInfo(language);
+            document.getElementById('languageOutput').innerHTML = result;
+        }
+
+        // Initialize page
+        window.addEventListener('DOMContentLoaded', () => {
+            getDayDemo();
+            getGradeDemo();
+            calculateDemo();
+            getSeasonDemo();
+            getTrafficDemo();
+            getLanguageDemo();
+        });
+    </script>
+</body>
+</html>

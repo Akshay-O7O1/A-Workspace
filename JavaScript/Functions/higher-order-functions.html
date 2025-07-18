@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher Order Functions - JavaScript Demo</title>
+    <link rel="stylesheet" href="common-styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Higher Order Functions</h1>
+            <p>Functions that take other functions as parameters or return functions</p>
+        </div>
+        
+        <div class="content">
+            <div class="demo-section">
+                <h3>Functions as Parameters</h3>
+                <div class="code-block">
+function applyOperation(a, b, operation) {
+    return operation(a, b);
+}
+
+const add = (x, y) => x + y;
+const multiply = (x, y) => x * y;
+const power = (x, y) => Math.pow(x, y);
+
+// Usage: applyOperation(5, 3, add) → 8
+                </div>
+                <div class="input-group">
+                    <input type="number" id="hofNum1" placeholder="First Number" value="5">
+                    <input type="number" id="hofNum2" placeholder="Second Number" value="3">
+                    <select id="operationSelect">
+                        <option value="add">Add</option>
+                        <option value="multiply">Multiply</option>
+                        <option value="power">Power</option>
+                    </select>
+                    <button class="btn" onclick="testHigherOrder()">Apply Operation</button>
+                </div>
+                <div class="output" id="hofOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Functions Returning Functions</h3>
+                <div class="code-block">
+function createMultiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+const double = createMultiplier(2);
+const triple = createMultiplier(3);
+const quadruple = createMultiplier(4);
+                </div>
+                <div class="input-group">
+                    <input type="number" id="factorInput" placeholder="Multiplier factor" value="5">
+                    <input type="number" id="numberInput" placeholder="Number to multiply" value="7">
+                    <button class="btn" onclick="testMultiplier()">Create & Use Multiplier</button>
+                </div>
+                <div class="output" id="multiplierOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Array Higher Order Methods</h3>
+                <div class="code-block">
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// map - transform each element
+const squared = numbers.map(n => n * n);
+
+// filter - select elements that meet criteria
+const evens = numbers.filter(n => n % 2 === 0);
+
+// reduce - combine all elements into single value
+const sum = numbers.reduce((acc, n) => acc + n, 0);
+
+// find - get first element that matches
+const firstEven = numbers.find(n => n % 2 === 0);
+                </div>
+                <div class="input-group">
+                    <input type="text" id="arrayHofInput" placeholder="Enter numbers (comma separated)" value="1,2,3,4,5,6,7,8,9,10">
+                    <button class="btn" onclick="demonstrateArrayMethods()">Process Array</button>
+                </div>
+                <div class="output" id="arrayMethodsOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Custom Higher Order Functions</h3>
+                <div class="code-block">
+function createValidator(validationFn, errorMessage) {
+    return function(value) {
+        if (validationFn(value)) {
+            return { valid: true, value };
+        } else {
+            return { valid: false, error: errorMessage };
+        }
+    };
+}
+
+const emailValidator = createValidator(
+    email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
+    "Invalid email format"
+);
+
+const passwordValidator = createValidator(
+    password => password.length >= 8,
+    "Password must be at least 8 characters"
+);
+                </div>
+                <div class="input-group">
+                    <input type="email" id="emailInput" placeholder="Enter email" value="user@example.com">
+                    <input type="password" id="passwordInput" placeholder="Enter password" value="password123">
+                    <button class="btn" onclick="validateInputs()">Validate</button>
+                </div>
+                <div class="output" id="validationOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Function Composition</h3>
+                <div class="code-block">
+const compose = (f, g) => (x) => f(g(x));
+
+const addTen = x => x + 10;
+const multiplyByTwo = x => x * 2;
+const square = x => x * x;
+
+// Compose functions: first multiply by 2, then add 10
+const multiplyThenAdd = compose(addTen, multiplyByTwo);
+
+// Chain multiple compositions
+const complexOperation = compose(square, compose(addTen, multiplyByTwo));
+                </div>
+                <div class="input-group">
+                    <input type="number" id="composeInput" placeholder="Enter number" value="5">
+                    <button class="btn" onclick="demonstrateComposition()">Apply Compositions</button>
+                </div>
+                <div class="output" id="compositionOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Currying Functions</h3>
+                <div class="code-block">
+function curry(fn) {
+    return function curried(...args) {
+        if (args.length >= fn.length) {
+            return fn.apply(this, args);
+        } else {
+            return function(...args2) {
+                return curried.apply(this, args.concat(args2));
+            };
+        }
+    };
+}
+
+const add3Numbers = (a, b, c) => a + b + c;
+const curriedAdd = curry(add3Numbers);
+
+// Can be called in multiple ways:
+// curriedAdd(1)(2)(3) or curriedAdd(1, 2)(3) or curriedAdd(1, 2, 3)
+                </div>
+                <div class="input-group">
+                    <input type="number" id="curry1" placeholder="First number" value="1">
+                    <input type="number" id="curry2" placeholder="Second number" value="2">
+                    <input type="number" id="curry3" placeholder="Third number" value="3">
+                    <button class="btn" onclick="demonstrateCurrying()">Test Currying</button>
+                </div>
+                <div class="output" id="curryingOutput"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="iife.html" class="nav-link">← IIFE</a>
+            <a href="user-defined-functions.html" class="nav-link">User Defined</a>
+            <a href="expression-functions.html" class="nav-link">Expression Functions</a>
+            <a href="arrow-functions.html" class="nav-link">Arrow Functions</a>
+        </div>
+    </div>
+
+    <script>
+        // Higher Order Functions
+
+        // Functions as Parameters
+        function applyOperation(a, b, operation) {
+            return operation(a, b);
+        }
+
+        const add = (x, y) => x + y;
+        const multiply = (x, y) => x * y;
+        const power = (x, y) => Math.pow(x, y);
+
+        // Functions Returning Functions
+        function createMultiplier(factor) {
+            return function(number) {
+                return number * factor;
+            };
+        }
+
+        // Custom Validators
+        function createValidator(validationFn, errorMessage) {
+            return function(value) {
+                if (validationFn(value)) {
+                    return { valid: true, value };
+                } else {
+                    return { valid: false, error: errorMessage };
+                }
+            };
+        }
+
+        const emailValidator = createValidator(
+            email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
+            "Invalid email format"
+        );
+
+        const passwordValidator = createValidator(
+            password => password.length >= 8,
+            "Password must be at least 8 characters"
+        );
+
+        // Function Composition
+        const compose = (f, g) => (x) => f(g(x));
+
+        const addTen = x => x + 10;
+        const multiplyByTwo = x => x * 2;
+        const square = x => x * x;
+
+        const multiplyThenAdd = compose(addTen, multiplyByTwo);
+        const complexOperation = compose(square, compose(addTen, multiplyByTwo));
+
+        // Currying
+        function curry(fn) {
+            return function curried(...args) {
+                if (args.length >= fn.length) {
+                    return fn.apply(this, args);
+                } else {
+                    return function(...args2) {
+                        return curried.apply(this, args.concat(args2));
+                    };
+                }
+            };
+        }
+
+        const add3Numbers = (a, b, c) => a + b + c;
+        const curriedAdd = curry(add3Numbers);
+
+        // Demo Functions
+        function testHigherOrder() {
+            const num1 = parseFloat(document.getElementById('hofNum1').value);
+            const num2 = parseFloat(document.getElementById('hofNum2').value);
+            const operation = document.getElementById('operationSelect').value;
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('hofOutput').innerHTML = "Please enter valid numbers!";
+                return;
+            }
+            
+            let operationFn;
+            switch(operation) {
+                case 'add': operationFn = add; break;
+                case 'multiply': operationFn = multiply; break;
+                case 'power': operationFn = power; break;
+            }
+            
+            const result = applyOperation(num1, num2, operationFn);
+            document.getElementById('hofOutput').innerHTML = 
+                `${operation}(${num1}, ${num2}) = ${result}`;
+        }
+
+        function testMultiplier() {
+            const factor = parseFloat(document.getElementById('factorInput').value);
+            const number = parseFloat(document.getElementById('numberInput').value);
+            
+            if (isNaN(factor) || isNaN(number)) {
+                document.getElementById('multiplierOutput').innerHTML = "Please enter valid numbers!";
+                return;
+            }
+            
+            const multiplier = createMultiplier(factor);
+            const result = multiplier(number);
+            
+            document.getElementById('multiplierOutput').innerHTML = 
+                `Created multiplier with factor ${factor}<br>
+                 ${number} × ${factor} = ${result}`;
+        }
+
+        function demonstrateArrayMethods() {
+            const input = document.getElementById('arrayHofInput').value;
+            
+            try {
+                const numbers = input.split(',').map(n => parseFloat(n.trim()));
+                
+                if (numbers.some(isNaN)) {
+                    document.getElementById('arrayMethodsOutput').innerHTML = "Please enter valid numbers!";
+                    return;
+                }
+                
+                const squared = numbers.map(n => n * n);
+                const evens = numbers.filter(n => n % 2 === 0);
+                const sum = numbers.reduce((acc, n) => acc + n, 0);
+                const firstEven = numbers.find(n => n % 2 === 0);
+                
+                document.getElementById('arrayMethodsOutput').innerHTML = 
+                    `Original: [${numbers.join(', ')}]<br>
+                     Squared (map): [${squared.join(', ')}]<br>
+                     Evens (filter): [${evens.join(', ')}]<br>
+                     Sum (reduce): ${sum}<br>
+                     First even (find): ${firstEven || 'none'}`;
+                     
+            } catch (error) {
+                document.getElementById('arrayMethodsOutput').innerHTML = "Error processing numbers!";
+            }
+        }
+
+        function validateInputs() {
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
+            
+            const emailResult = emailValidator(email);
+            const passwordResult = passwordValidator(password);
+            
+            let output = `Email validation: ${emailResult.valid ? '✅ Valid' : '❌ ' + emailResult.error}<br>`;
+            output += `Password validation: ${passwordResult.valid ? '✅ Valid' : '❌ ' + passwordResult.error}`;
+            
+            document.getElementById('validationOutput').innerHTML = output;
+        }
+
+        function demonstrateComposition() {
+            const input = parseFloat(document.getElementById('composeInput').value);
+            
+            if (isNaN(input)) {
+                document.getElementById('compositionOutput').innerHTML = "Please enter a valid number!";
+                return;
+            }
+            
+            const step1 = multiplyByTwo(input);
+            const step2 = addTen(step1);
+            const composed = multiplyThenAdd(input);
+            const complex = complexOperation(input);
+            
+            document.getElementById('compositionOutput').innerHTML = 
+                `Input: ${input}<br>
+                 Step by step: ${input} → ×2 → ${step1} → +10 → ${step2}<br>
+                 Composed function: ${composed}<br>
+                 Complex (×2, +10, square): ${complex}`;
+        }
+
+        function demonstrateCurrying() {
+            const a = parseFloat(document.getElementById('curry1').value);
+            const b = parseFloat(document.getElementById('curry2').value);
+            const c = parseFloat(document.getElementById('curry3').value);
+            
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                document.getElementById('curryingOutput').innerHTML = "Please enter valid numbers!";
+                return;
+            }
+            
+            const normal = add3Numbers(a, b, c);
+            const curried1 = curriedAdd(a)(b)(c);
+            const curried2 = curriedAdd(a, b)(c);
+            const curried3 = curriedAdd(a, b, c);
+            
+            document.getElementById('curryingOutput').innerHTML = 
+                `Normal function: add3Numbers(${a}, ${b}, ${c}) = ${normal}<br>
+                 Curried (1)(2)(3): ${curried1}<br>
+                 Curried (1,2)(3): ${curried2}<br>
+                 Curried (1,2,3): ${curried3}<br>
+                 All results are equal: ${normal === curried1 && curried1 === curried2 && curried2 === curried3}`;
+        }
+
+        // Initialize with default values
+        window.addEventListener('DOMContentLoaded', () => {
+            testHigherOrder();
+            testMultiplier();
+            demonstrateArrayMethods();
+            validateInputs();
+            demonstrateComposition();
+            demonstrateCurrying();
+        });
+    </script>
+</body>
+</html>

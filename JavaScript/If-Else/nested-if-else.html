@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested If-Else - JavaScript Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .demo-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+
+        .demo-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            border-bottom: 2px solid #4ecdc4;
+            padding-bottom: 5px;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .output {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: monospace;
+            min-height: 50px;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        .input-group input, .input-group select {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Nested If-Else Statements</h1>
+            <p>Complex conditional logic with multiple levels</p>
+        </div>
+        
+        <div class="content">
+            <div class="demo-section">
+                <h3>Student Grade System</h3>
+                <div class="code-block">
+function calculateGrade(score, attendance) {
+    if (score >= 90) {
+        if (attendance >= 95) {
+            return "A+ (Excellent with perfect attendance)";
+        } else if (attendance >= 85) {
+            return "A (Excellent)";
+        } else {
+            return "A- (Excellent but poor attendance)";
+        }
+    } else if (score >= 80) {
+        if (attendance >= 90) {
+            return "B+ (Good with great attendance)";
+        } else if (attendance >= 75) {
+            return "B (Good)";
+        } else {
+            return "B- (Good but needs better attendance)";
+        }
+    } else if (score >= 70) {
+        if (attendance >= 85) {
+            return "C+ (Average with good attendance)";
+        } else {
+            return "C (Average - improve both score and attendance)";
+        }
+    } else {
+        return "F (Fail - needs significant improvement)";
+    }
+}
+                </div>
+                <div class="input-group">
+                    <input type="number" id="scoreInput" placeholder="Score (0-100)" value="85" min="0" max="100">
+                    <input type="number" id="attendanceInput" placeholder="Attendance %" value="90" min="0" max="100">
+                    <button class="btn" onclick="calculateGradeDemo()">Calculate Grade</button>
+                </div>
+                <div class="output" id="gradeOutput"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateGrade(score, attendance) {
+            if (score >= 90) {
+                if (attendance >= 95) {
+                    return "A+ (Excellent with perfect attendance)";
+                } else if (attendance >= 85) {
+                    return "A (Excellent)";
+                } else {
+                    return "A- (Excellent but poor attendance)";
+                }
+            } else if (score >= 80) {
+                if (attendance >= 90) {
+                    return "B+ (Good with great attendance)";
+                } else if (attendance >= 75) {
+                    return "B (Good)";
+                } else {
+                    return "B- (Good but needs better attendance)";
+                }
+            } else if (score >= 70) {
+                if (attendance >= 85) {
+                    return "C+ (Average with good attendance)";
+                } else {
+                    return "C (Average - improve both score and attendance)";
+                }
+            } else {
+                return "F (Fail - needs significant improvement)";
+            }
+        }
+
+        function calculateGradeDemo() {
+            const score = parseFloat(document.getElementById('scoreInput').value);
+            const attendance = parseFloat(document.getElementById('attendanceInput').value);
+            
+            if (isNaN(score) || isNaN(attendance)) {
+                document.getElementById('gradeOutput').innerHTML = "Please enter valid numbers!";
+                return;
+            }
+            
+            const result = calculateGrade(score, attendance);
+            document.getElementById('gradeOutput').innerHTML = 
+                `Score: ${score}, Attendance: ${attendance}%<br>Grade: ${result}`;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            calculateGradeDemo();
+        });
+    </script>
+</body>
+</html>    
+        <div class="demo-section">
+                <h3>Weather Advisory System</h3>
+                <div class="code-block">
+function getWeatherAdvice(temperature, humidity, windSpeed) {
+    if (temperature > 35) {
+        if (humidity > 80) {
+            if (windSpeed < 5) {
+                return "🔥 Extreme heat with high humidity - Stay indoors with AC!";
+            } else {
+                return "🌡️ Very hot and humid but windy - Seek shade, stay hydrated";
+            }
+        } else {
+            if (windSpeed > 15) {
+                return "🌪️ Hot and windy - Be careful of dust storms";
+            } else {
+                return "☀️ Hot but dry - Good for outdoor activities with sun protection";
+            }
+        }
+    } else if (temperature > 25) {
+        if (humidity > 70) {
+            if (windSpeed < 10) {
+                return "🌫️ Warm and humid - Might feel sticky";
+            } else {
+                return "🌬️ Warm, humid but breezy - Pleasant conditions";
+            }
+        } else {
+            return "😊 Perfect weather - Great for any outdoor activity!";
+        }
+    } else if (temperature > 15) {
+        if (humidity > 60) {
+            return "🌧️ Cool and humid - Might rain, carry umbrella";
+        } else {
+            if (windSpeed > 20) {
+                return "💨 Cool and very windy - Dress warmly";
+            } else {
+                return "🍂 Cool and pleasant - Light jacket recommended";
+            }
+        }
+    } else {
+        if (windSpeed > 15) {
+            return "🥶 Cold and windy - Bundle up well!";
+        } else {
+            return "❄️ Cold but calm - Warm clothes needed";
+        }
+    }
+}
+                </div>
+                <div class="input-group">
+                    <input type="number" id="tempInput" placeholder="Temperature (°C)" value="28">
+                    <input type="number" id="humidityInput" placeholder="Humidity %" value="65" min="0" max="100">
+                    <input type="number" id="windInput" placeholder="Wind Speed (km/h)" value="8" min="0">
+                    <button class="btn" onclick="getWeatherAdviceDemo()">Get Weather Advice</button>
+                </div>
+                <div class="output" id="weatherOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Loan Eligibility Checker</h3>
+                <div class="code-block">
+function checkLoanEligibility(income, creditScore, age, employment) {
+    if (income >= 50000) {
+        if (creditScore >= 750) {
+            if (age >= 21 && age <= 65) {
+                if (employment >= 2) {
+                    return "✅ Approved - Premium loan with best rates";
+                } else {
+                    return "✅ Approved - Standard loan with good rates";
+                }
+            } else {
+                return "❌ Rejected - Age not within eligible range (21-65)";
+            }
+        } else if (creditScore >= 650) {
+            if (age >= 25 && age <= 60) {
+                if (employment >= 3) {
+                    return "⚠️ Conditional approval - Higher interest rate";
+                } else {
+                    return "❌ Rejected - Need more employment history";
+                }
+            } else {
+                return "❌ Rejected - Age and credit score combination not eligible";
+            }
+        } else {
+            return "❌ Rejected - Credit score too low";
+        }
+    } else if (income >= 30000) {
+        if (creditScore >= 700) {
+            if (employment >= 3) {
+                return "⚠️ Approved - Small loan amount only";
+            } else {
+                return "❌ Rejected - Need stable employment";
+            }
+        } else {
+            return "❌ Rejected - Income too low for credit score";
+        }
+    } else {
+        return "❌ Rejected - Minimum income requirement not met";
+    }
+}
+                </div>
+                <div class="input-group">
+                    <input type="number" id="incomeInput" placeholder="Annual Income" value="60000">
+                    <input type="number" id="creditInput" placeholder="Credit Score" value="720" min="300" max="850">
+                    <input type="number" id="ageInput" placeholder="Age" value="30" min="18" max="80">
+                    <input type="number" id="employmentInput" placeholder="Employment Years" value="3" min="0">
+                    <button class="btn" onclick="checkLoanDemo()">Check Eligibility</button>
+                </div>
+                <div class="output" id="loanOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Gaming Performance Optimizer</h3>
+                <div class="code-block">
+function optimizeGameSettings(cpu, gpu, ram, resolution) {
+    if (cpu >= 80) { // High-end CPU
+        if (gpu >= 80) { // High-end GPU
+            if (ram >= 16) {
+                if (resolution === "4K") {
+                    return "🎮 Ultra settings at 4K - Maximum gaming experience!";
+                } else {
+                    return "🎮 Ultra settings - Perfect performance guaranteed!";
+                }
+            } else {
+                return "⚡ High settings - Consider upgrading RAM for ultra";
+            }
+        } else if (gpu >= 60) { // Mid-range GPU
+            if (ram >= 8) {
+                return "🎯 Medium-High settings - Good balance of quality and performance";
+            } else {
+                return "📊 Medium settings - RAM upgrade recommended";
+            }
+        } else {
+            return "⚠️ Low-Medium settings - GPU is the bottleneck";
+        }
+    } else if (cpu >= 60) { // Mid-range CPU
+        if (gpu >= 70) {
+            if (ram >= 12) {
+                return "🎮 High settings - GPU carrying the load well";
+            } else {
+                return "📈 Medium-High settings - More RAM would help";
+            }
+        } else if (gpu >= 50) {
+            return "⚖️ Medium settings - Balanced but modest performance";
+        } else {
+            return "📉 Low-Medium settings - Both CPU and GPU need upgrade";
+        }
+    } else { // Low-end CPU
+        if (gpu >= 60) {
+            return "🔄 Medium settings - CPU bottlenecking your GPU";
+        } else {
+            return "⚠️ Low settings - System needs significant upgrades";
+        }
+    }
+}
+                </div>
+                <div class="input-group">
+                    <input type="number" id="cpuInput" placeholder="CPU Performance %" value="75" min="0" max="100">
+                    <input type="number" id="gpuInput" placeholder="GPU Performance %" value="85" min="0" max="100">
+                    <input type="number" id="ramInput" placeholder="RAM (GB)" value="16" min="2" max="64">
+                    <select id="resolutionSelect">
+                        <option value="1080p">1080p</option>
+                        <option value="1440p">1440p</option>
+                        <option value="4K">4K</option>
+                    </select>
+                    <button class="btn" onclick="optimizeGameDemo()">Optimize Settings</button>
+                </div>
+                <div class="output" id="gameOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Investment Risk Assessment</h3>
+                <div class="code-block">
+function assessInvestmentRisk(amount, age, experience, riskTolerance) {
+    if (amount >= 100000) { // Large investment
+        if (age <= 35) {
+            if (experience >= 5) {
+                if (riskTolerance === "high") {
+                    return "🚀 Aggressive portfolio - High growth potential stocks and crypto";
+                } else if (riskTolerance === "medium") {
+                    return "📈 Growth portfolio - Mix of stocks and bonds";
+                } else {
+                    return "🛡️ Conservative growth - Mostly bonds with some stocks";
+                }
+            } else {
+                return "📚 Start with index funds - Build experience first";
+            }
+        } else if (age <= 50) {
+            if (experience >= 3) {
+                if (riskTolerance === "high") {
+                    return "⚖️ Balanced aggressive - Diversified with growth focus";
+                } else {
+                    return "🏦 Moderate portfolio - Balanced stocks and bonds";
+                }
+            } else {
+                return "🎯 Target-date funds - Professional management recommended";
+            }
+        } else {
+            if (riskTolerance === "low") {
+                return "💰 Conservative portfolio - Focus on capital preservation";
+            } else {
+                return "🔄 Moderate conservative - Some growth with safety";
+            }
+        }
+    } else if (amount >= 10000) { // Medium investment
+        if (age <= 40) {
+            if (experience >= 2) {
+                return "📊 Diversified ETFs - Good starting portfolio";
+            } else {
+                return "🎓 Education first - Start with robo-advisors";
+            }
+        } else {
+            return "🏛️ Stable value funds - Lower risk approach";
+        }
+    } else { // Small investment
+        return "🌱 Start simple - Index funds or savings account";
+    }
+}
+                </div>
+                <div class="input-group">
+                    <input type="number" id="amountInput" placeholder="Investment Amount" value="50000">
+                    <input type="number" id="investorAgeInput" placeholder="Age" value="32" min="18" max="80">
+                    <input type="number" id="experienceInput" placeholder="Investment Experience (years)" value="3" min="0">
+                    <select id="riskSelect">
+                        <option value="low">Low Risk Tolerance</option>
+                        <option value="medium">Medium Risk Tolerance</option>
+                        <option value="high">High Risk Tolerance</option>
+                    </select>
+                    <button class="btn" onclick="assessRiskDemo()">Assess Investment</button>
+                </div>
+                <div class="output" id="investmentOutput"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getWeatherAdvice(temperature, humidity, windSpeed) {
+            if (temperature > 35) {
+                if (humidity > 80) {
+                    if (windSpeed < 5) {
+                        return "🔥 Extreme heat with high humidity - Stay indoors with AC!";
+                    } else {
+                        return "🌡️ Very hot and humid but windy - Seek shade, stay hydrated";
+                    }
+                } else {
+                    if (windSpeed > 15) {
+                        return "🌪️ Hot and windy - Be careful of dust storms";
+                    } else {
+                        return "☀️ Hot but dry - Good for outdoor activities with sun protection";
+                    }
+                }
+            } else if (temperature > 25) {
+                if (humidity > 70) {
+                    if (windSpeed < 10) {
+                        return "🌫️ Warm and humid - Might feel sticky";
+                    } else {
+                        return "🌬️ Warm, humid but breezy - Pleasant conditions";
+                    }
+                } else {
+                    return "😊 Perfect weather - Great for any outdoor activity!";
+                }
+            } else if (temperature > 15) {
+                if (humidity > 60) {
+                    return "🌧️ Cool and humid - Might rain, carry umbrella";
+                } else {
+                    if (windSpeed > 20) {
+                        return "💨 Cool and very windy - Dress warmly";
+                    } else {
+                        return "🍂 Cool and pleasant - Light jacket recommended";
+                    }
+                }
+            } else {
+                if (windSpeed > 15) {
+                    return "🥶 Cold and windy - Bundle up well!";
+                } else {
+                    return "❄️ Cold but calm - Warm clothes needed";
+                }
+            }
+        }
+
+        function checkLoanEligibility(income, creditScore, age, employment) {
+            if (income >= 50000) {
+                if (creditScore >= 750) {
+                    if (age >= 21 && age <= 65) {
+                        if (employment >= 2) {
+                            return "✅ Approved - Premium loan with best rates";
+                        } else {
+                            return "✅ Approved - Standard loan with good rates";
+                        }
+                    } else {
+                        return "❌ Rejected - Age not within eligible range (21-65)";
+                    }
+                } else if (creditScore >= 650) {
+                    if (age >= 25 && age <= 60) {
+                        if (employment >= 3) {
+                            return "⚠️ Conditional approval - Higher interest rate";
+                        } else {
+                            return "❌ Rejected - Need more employment history";
+                        }
+                    } else {
+                        return "❌ Rejected - Age and credit score combination not eligible";
+                    }
+                } else {
+                    return "❌ Rejected - Credit score too low";
+                }
+            } else if (income >= 30000) {
+                if (creditScore >= 700) {
+                    if (employment >= 3) {
+                        return "⚠️ Approved - Small loan amount only";
+                    } else {
+                        return "❌ Rejected - Need stable employment";
+                    }
+                } else {
+                    return "❌ Rejected - Income too low for credit score";
+                }
+            } else {
+                return "❌ Rejected - Minimum income requirement not met";
+            }
+        }
+
+        function optimizeGameSettings(cpu, gpu, ram, resolution) {
+            if (cpu >= 80) {
+                if (gpu >= 80) {
+                    if (ram >= 16) {
+                        if (resolution === "4K") {
+                            return "🎮 Ultra settings at 4K - Maximum gaming experience!";
+                        } else {
+                            return "🎮 Ultra settings - Perfect performance guaranteed!";
+                        }
+                    } else {
+                        return "⚡ High settings - Consider upgrading RAM for ultra";
+                    }
+                } else if (gpu >= 60) {
+                    if (ram >= 8) {
+                        return "🎯 Medium-High settings - Good balance of quality and performance";
+                    } else {
+                        return "📊 Medium settings - RAM upgrade recommended";
+                    }
+                } else {
+                    return "⚠️ Low-Medium settings - GPU is the bottleneck";
+                }
+            } else if (cpu >= 60) {
+                if (gpu >= 70) {
+                    if (ram >= 12) {
+                        return "🎮 High settings - GPU carrying the load well";
+                    } else {
+                        return "📈 Medium-High settings - More RAM would help";
+                    }
+                } else if (gpu >= 50) {
+                    return "⚖️ Medium settings - Balanced but modest performance";
+                } else {
+                    return "📉 Low-Medium settings - Both CPU and GPU need upgrade";
+                }
+            } else {
+                if (gpu >= 60) {
+                    return "🔄 Medium settings - CPU bottlenecking your GPU";
+                } else {
+                    return "⚠️ Low settings - System needs significant upgrades";
+                }
+            }
+        }
+
+        function assessInvestmentRisk(amount, age, experience, riskTolerance) {
+            if (amount >= 100000) {
+                if (age <= 35) {
+                    if (experience >= 5) {
+                        if (riskTolerance === "high") {
+                            return "🚀 Aggressive portfolio - High growth potential stocks and crypto";
+                        } else if (riskTolerance === "medium") {
+                            return "📈 Growth portfolio - Mix of stocks and bonds";
+                        } else {
+                            return "🛡️ Conservative growth - Mostly bonds with some stocks";
+                        }
+                    } else {
+                        return "📚 Start with index funds - Build experience first";
+                    }
+                } else if (age <= 50) {
+                    if (experience >= 3) {
+                        if (riskTolerance === "high") {
+                            return "⚖️ Balanced aggressive - Diversified with growth focus";
+                        } else {
+                            return "🏦 Moderate portfolio - Balanced stocks and bonds";
+                        }
+                    } else {
+                        return "🎯 Target-date funds - Professional management recommended";
+                    }
+                } else {
+                    if (riskTolerance === "low") {
+                        return "💰 Conservative portfolio - Focus on capital preservation";
+                    } else {
+                        return "🔄 Moderate conservative - Some growth with safety";
+                    }
+                }
+            } else if (amount >= 10000) {
+                if (age <= 40) {
+                    if (experience >= 2) {
+                        return "📊 Diversified ETFs - Good starting portfolio";
+                    } else {
+                        return "🎓 Education first - Start with robo-advisors";
+                    }
+                } else {
+                    return "🏛️ Stable value funds - Lower risk approach";
+                }
+            } else {
+                return "🌱 Start simple - Index funds or savings account";
+            }
+        }
+
+        // Demo functions
+        function getWeatherAdviceDemo() {
+            const temp = parseFloat(document.getElementById('tempInput').value);
+            const humidity = parseFloat(document.getElementById('humidityInput').value);
+            const wind = parseFloat(document.getElementById('windInput').value);
+            
+            if (isNaN(temp) || isNaN(humidity) || isNaN(wind)) {
+                document.getElementById('weatherOutput').innerHTML = "Please enter valid numbers!";
+                return;
+            }
+            
+            const result = getWeatherAdvice(temp, humidity, wind);
+            document.getElementById('weatherOutput').innerHTML = 
+                `Temperature: ${temp}°C, Humidity: ${humidity}%, Wind: ${wind} km/h<br><br>${result}`;
+        }
+
+        function checkLoanDemo() {
+            const income = parseFloat(document.getElementById('incomeInput').value);
+            const credit = parseFloat(document.getElementById('creditInput').value);
+            const age = parseFloat(document.getElementById('ageInput').value);
+            const employment = parseFloat(document.getElementById('employmentInput').value);
+            
+            if (isNaN(income) || isNaN(credit) || isNaN(age) || isNaN(employment)) {
+                document.getElementById('loanOutput').innerHTML = "Please enter valid numbers!";
+                return;
+            }
+            
+            const result = checkLoanEligibility(income, credit, age, employment);
+            document.getElementById('loanOutput').innerHTML = 
+                `Income: $${income}, Credit: ${credit}, Age: ${age}, Employment: ${employment} years<br><br>${result}`;
+        }
+
+        function optimizeGameDemo() {
+            const cpu = parseFloat(document.getElementById('cpuInput').value);
+            const gpu = parseFloat(document.getElementById('gpuInput').value);
+            const ram = parseFloat(document.getElementById('ramInput').value);
+            const resolution = document.getElementById('resolutionSelect').value;
+            
+            if (isNaN(cpu) || isNaN(gpu) || isNaN(ram)) {
+                document.getElementById('gameOutput').innerHTML = "Please enter valid numbers!";
+                return;
+            }
+            
+            const result = optimizeGameSettings(cpu, gpu, ram, resolution);
+            document.getElementById('gameOutput').innerHTML = 
+                `CPU: ${cpu}%, GPU: ${gpu}%, RAM: ${ram}GB, Resolution: ${resolution}<br><br>${result}`;
+        }
+
+        function assessRiskDemo() {
+            const amount = parseFloat(document.getElementById('amountInput').value);
+            const age = parseFloat(document.getElementById('investorAgeInput').value);
+            const experience = parseFloat(document.getElementById('experienceInput').value);
+            const risk = document.getElementById('riskSelect').value;
+            
+            if (isNaN(amount) || isNaN(age) || isNaN(experience)) {
+                document.getElementById('investmentOutput').innerHTML = "Please enter valid numbers!";
+                return;
+            }
+            
+            const result = assessInvestmentRisk(amount, age, experience, risk);
+            document.getElementById('investmentOutput').innerHTML = 
+                `Amount: $${amount}, Age: ${age}, Experience: ${experience} years, Risk: ${risk}<br><br>${result}`;
+        }
+
+        // Initialize all demos
+        window.addEventListener('DOMContentLoaded', () => {
+            calculateGradeDemo();
+            getWeatherAdviceDemo();
+            checkLoanDemo();
+            optimizeGameDemo();
+            assessRiskDemo();
+        });
+    </script>
+</body>
+</html>

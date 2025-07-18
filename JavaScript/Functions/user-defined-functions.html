@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Defined Functions - JavaScript Demo</title>
+    <link rel="stylesheet" href="common-styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>User Defined Functions</h1>
+            <p>Creating and using custom functions in JavaScript</p>
+        </div>
+        
+        <div class="content">
+            <div class="demo-section">
+                <h3>Simple Function Declaration</h3>
+                <div class="code-block">
+function greetUser(name) {
+    return "Hello, " + name + "! Welcome to JavaScript Functions!";
+}
+                </div>
+                <div class="input-group">
+                    <input type="text" id="userName" placeholder="Enter your name" value="Developer">
+                    <button class="btn" onclick="testGreeting()">Greet Me</button>
+                </div>
+                <div class="output" id="greetOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Function with Multiple Parameters</h3>
+                <div class="code-block">
+function calculateArea(length, width) {
+    return length * width;
+}
+
+function calculatePerimeter(length, width) {
+    return 2 * (length + width);
+}
+                </div>
+                <div class="input-group">
+                    <input type="number" id="length" placeholder="Length" value="10">
+                    <input type="number" id="width" placeholder="Width" value="5">
+                    <button class="btn" onclick="calculateRectangle()">Calculate</button>
+                </div>
+                <div class="output" id="rectangleOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Function with Default Parameters</h3>
+                <div class="code-block">
+function createMessage(text, prefix = "Info", suffix = "!") {
+    return prefix + ": " + text + suffix;
+}
+                </div>
+                <div class="input-group">
+                    <input type="text" id="messageText" placeholder="Enter message" value="This is a test">
+                    <input type="text" id="messagePrefix" placeholder="Prefix (optional)" value="">
+                    <button class="btn" onclick="testDefaultParams()">Create Message</button>
+                </div>
+                <div class="output" id="messageOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Function Returning Object</h3>
+                <div class="code-block">
+function createStudent(name, age, grade) {
+    return {
+        name: name,
+        age: age,
+        grade: grade,
+        getInfo: function() {
+            return this.name + " is " + this.age + " years old and in grade " + this.grade;
+        }
+    };
+}
+                </div>
+                <div class="input-group">
+                    <input type="text" id="studentName" placeholder="Student Name" value="Alice">
+                    <input type="number" id="studentAge" placeholder="Age" value="20">
+                    <input type="text" id="studentGrade" placeholder="Grade" value="A">
+                    <button class="btn" onclick="createStudentDemo()">Create Student</button>
+                </div>
+                <div class="output" id="studentOutput"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="expression-functions.html" class="nav-link">Expression Functions →</a>
+            <a href="arrow-functions.html" class="nav-link">Arrow Functions</a>
+            <a href="iife.html" class="nav-link">IIFE</a>
+            <a href="higher-order-functions.html" class="nav-link">Higher Order</a>
+        </div>
+    </div>
+
+    <script>
+        // User Defined Functions
+        function greetUser(name) {
+            return "Hello, " + name + "! Welcome to JavaScript Functions!";
+        }
+
+        function calculateArea(length, width) {
+            return length * width;
+        }
+
+        function calculatePerimeter(length, width) {
+            return 2 * (length + width);
+        }
+
+        function createMessage(text, prefix = "Info", suffix = "!") {
+            return prefix + ": " + text + suffix;
+        }
+
+        function createStudent(name, age, grade) {
+            return {
+                name: name,
+                age: age,
+                grade: grade,
+                getInfo: function() {
+                    return this.name + " is " + this.age + " years old and in grade " + this.grade;
+                }
+            };
+        }
+
+        // Demo Functions
+        function testGreeting() {
+            const name = document.getElementById('userName').value;
+            const result = greetUser(name);
+            document.getElementById('greetOutput').innerHTML = result;
+        }
+
+        function calculateRectangle() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            
+            if (isNaN(length) || isNaN(width)) {
+                document.getElementById('rectangleOutput').innerHTML = "Please enter valid numbers!";
+                return;
+            }
+            
+            const area = calculateArea(length, width);
+            const perimeter = calculatePerimeter(length, width);
+            
+            document.getElementById('rectangleOutput').innerHTML = 
+                `Area: ${area} square units<br>Perimeter: ${perimeter} units`;
+        }
+
+        function testDefaultParams() {
+            const text = document.getElementById('messageText').value;
+            const prefix = document.getElementById('messagePrefix').value || undefined;
+            
+            const result = createMessage(text, prefix);
+            document.getElementById('messageOutput').innerHTML = result;
+        }
+
+        function createStudentDemo() {
+            const name = document.getElementById('studentName').value;
+            const age = parseInt(document.getElementById('studentAge').value);
+            const grade = document.getElementById('studentGrade').value;
+            
+            const student = createStudent(name, age, grade);
+            document.getElementById('studentOutput').innerHTML = 
+                `Student Object Created:<br>${student.getInfo()}`;
+        }
+
+        // Initialize with default values
+        window.onload = function() {
+            testGreeting();
+            calculateRectangle();
+            testDefaultParams();
+            createStudentDemo();
+        };
+    </script>
+</body>
+</html>

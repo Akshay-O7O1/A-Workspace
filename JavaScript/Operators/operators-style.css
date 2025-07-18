@@ -1,0 +1,284 @@
+/* Common CSS for JavaScript Operators Demo Pages */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 300;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+h3 {
+    color: #34495e;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+.operator-section {
+    margin: 25px 0;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.operator-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.operator-section p {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.result {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+    font-weight: 500;
+    font-family: 'Courier New', monospace;
+    border-left: 4px solid #3498db;
+    background: linear-gradient(90deg, #e8f4fd, #f8fbff);
+    color: #2c3e50;
+    min-height: 20px;
+    transition: all 0.3s ease;
+}
+
+.result:not(:empty) {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+button {
+    background: linear-gradient(145deg, #3498db, #2980b9);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 8px 5px;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    background: linear-gradient(145deg, #2980b9, #1f5f8b);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.code {
+    background: linear-gradient(145deg, #2c3e50, #34495e);
+    color: #ecf0f1;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: 'Courier New', Monaco, monospace;
+    margin: 15px 0;
+    font-size: 0.95em;
+    border-left: 4px solid #e74c3c;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+.syntax {
+    background: linear-gradient(145deg, #f39c12, #e67e22);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-family: 'Courier New', Monaco, monospace;
+    font-size: 1.2em;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.warning {
+    background: linear-gradient(145deg, #fff3cd, #ffeaa7);
+    border: 1px solid #f39c12;
+    color: #856404;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    border-left: 4px solid #f39c12;
+    font-weight: 500;
+}
+
+.input-section {
+    margin: 20px 0;
+    padding: 15px;
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+input, select {
+    padding: 10px 15px;
+    margin: 8px 5px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+input[type="number"] {
+    width: 120px;
+}
+
+/* Specific color themes for different operator types */
+.arithmetic .result {
+    background: linear-gradient(90deg, #e8f5e8, #f0fff0);
+    border-left-color: #28a745;
+}
+
+.arithmetic button {
+    background: linear-gradient(145deg, #28a745, #218838);
+}
+
+.arithmetic button:hover {
+    background: linear-gradient(145deg, #218838, #1e7e34);
+}
+
+.logical .result {
+    background: linear-gradient(90deg, #e8f5e8, #f0fff4);
+    border-left-color: #28a745;
+}
+
+.logical button {
+    background: linear-gradient(145deg, #28a745, #218838);
+}
+
+.logical button:hover {
+    background: linear-gradient(145deg, #218838, #1e7e34);
+}
+
+.assignment .result {
+    background: linear-gradient(90deg, #fff3cd, #fffbf0);
+    border-left-color: #fd7e14;
+}
+
+.assignment button {
+    background: linear-gradient(145deg, #fd7e14, #e8590c);
+}
+
+.assignment button:hover {
+    background: linear-gradient(145deg, #e8590c, #d63384);
+}
+
+.comparison .result {
+    background: linear-gradient(90deg, #d1ecf1, #f0f8ff);
+    border-left-color: #17a2b8;
+}
+
+.comparison button {
+    background: linear-gradient(145deg, #17a2b8, #138496);
+}
+
+.comparison button:hover {
+    background: linear-gradient(145deg, #138496, #0f6674);
+}
+
+.ternary .result {
+    background: linear-gradient(90deg, #f8d7da, #fff5f5);
+    border-left-color: #dc3545;
+}
+
+.ternary button {
+    background: linear-gradient(145deg, #dc3545, #c82333);
+}
+
+.ternary button:hover {
+    background: linear-gradient(145deg, #c82333, #a71e2a);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    button {
+        padding: 10px 16px;
+        font-size: 0.9em;
+    }
+    
+    .code {
+        font-size: 0.85em;
+    }
+    
+    input {
+        width: 100px;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .container {
+        box-shadow: none;
+    }
+    
+    button {
+        display: none;
+    }
+}
