@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Mouse Hover Event</title>
+    <script src="jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <h1>jQuery Mouse Hover Event Demo</h1>
+
+    <div id="mouseHoverBox"
+        style="width: 300px; height: 200px; background-color: lightblue; border: 2px solid blue; padding: 20px; margin: 20px;">
+        <h3>Mouse Hover Box</h3>
+        <p>Hover your mouse on the box to trigger the alert!</p>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Mouse Hover event
+            $("#mouseHoverBox").hover(function () {
+                alert("Hello! You hovered on the blue box!");
+            });
+        });
+    </script>
+</body>
+
+</html>

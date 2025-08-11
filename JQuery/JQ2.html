@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Mouse Leave Event</title>
+    <script src="jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <h1>jQuery Mouse Leave Event Demo</h1>
+
+    <div id="mouseLeaveBox"
+        style="width: 300px; height: 200px; background-color: lightblue; border: 2px solid blue; padding: 20px; margin: 20px;">
+        <h3>Leave the Box</h3>
+        <p>Move your mouse over this box to trigger the alert!</p>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Mouse Leave event
+            $("#mouseLeaveBox").mouseleave(function () {
+                alert("Hello! You Left the blue box!");
+            });
+        });
+    </script>
+</body>
+
+</html>
