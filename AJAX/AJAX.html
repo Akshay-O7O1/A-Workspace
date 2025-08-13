@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX 1</title>
+</head>
+<body>
+    <h2>Text File Content</h2>
+    <div id="filecontent">Loading********</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url:'test_data.txt',
+                method:'GET',
+                dataType:'text',
+                success:function(data){
+                    $('#filecontent').text(data);
+                },
+                error:function(){
+                    $('#filecontent').text('Failed to Load the File');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

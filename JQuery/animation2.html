@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Animation 2</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("div").animate({
+                    left: '250px',
+                    fontSize: '3em',
+                    width: '200px',
+                    height: '150px',
+                    opacity: '0.5',
+                }, "slow");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <button>Click Here!</button>
+    <p>Paragraph 1</p>
+    <div style="background-color: aquamarine; width: 100px; height: 100px; position: relative;">Content</div>
+</body>
+
+</html>
