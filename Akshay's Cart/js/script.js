@@ -1,6 +1,6 @@
-// Akshay's Cart - JavaScript Functions
+// Bite Box - JavaScript Functions
 
-$(document).ready(function() {
+$(document).ready(function () {
     // Menu items data
     const menuItems = [
         {
@@ -61,8 +61,8 @@ $(document).ready(function() {
         }
     ];
 
-    // Cart array
-    let cart = [];
+    // Cart array - load from localStorage if available
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     // Initialize the application
     function init() {
@@ -70,6 +70,21 @@ $(document).ready(function() {
         setupEventListeners();
         updateCartDisplay();
         createPlaceholderImages();
+        loadCartFromStorage();
+    }
+
+    // Load cart from localStorage
+    function loadCartFromStorage() {
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+            cart = JSON.parse(savedCart);
+            updateCartDisplay();
+        }
+    }
+
+    // Save cart to localStorage
+    function saveCartToStorage() {
+        localStorage.setItem('cart', JSON.stringify(cart));
     }
 
     // Display menu items
@@ -89,14 +104,14 @@ $(document).ready(function() {
                 </div>
             </div>
         `).join('');
-        
+
         $('#menu-items').html(menuHTML);
     }
 
     // Event listeners
     function setupEventListeners() {
         // Smooth scrolling for navigation links
-        $('.nav-link').click(function(e) {
+        $('.nav-link').click(function (e) {
             const href = $(this).attr('href');
             if (href.startsWith('#')) {
                 e.preventDefault();
@@ -110,14 +125,14 @@ $(document).ready(function() {
         });
 
         // Category filters
-        $('.category-filter').click(function() {
+        $('.category-filter').click(function () {
             $('.category-filter').removeClass('active');
             $(this).addClass('active');
             filterMenuItems($(this).data('category'));
         });
 
         // Add to cart
-        $(document).on('click', '.add-to-cart-btn', function() {
+        $(document).on('click', '.add-to-cart-btn', function () {
             const itemId = parseInt($(this).data('id'));
             addToCart(itemId);
             const $btn = $(this);
@@ -126,7 +141,7 @@ $(document).ready(function() {
         });
 
         // Cart controls
-        $(document).on('click', '.quantity-btn', function() {
+        $(document).on('click', '.quantity-btn', function () {
             const action = $(this).data('action');
             const itemId = parseInt($(this).data('id'));
             if (action === 'increase') {
@@ -136,19 +151,25 @@ $(document).ready(function() {
             }
         });
 
-        $(document).on('click', '.remove-item', function() {
+        $(document).on('click', '.remove-item', function () {
             removeFromCart(parseInt($(this).data('id')));
         });
 
         // Checkout
-        $('#checkout-btn').click(function() {
+        $('#checkout-btn').click(function () {
             if (cart.length > 0) checkout();
         });
 
-        // Contact form
-        $('#contact-form').submit(function(e) {
+        // My Orders navigation
+        $('.nav-link[href="my-orders.html"]').click(function (e) {
             e.preventDefault();
-            showMessage('Thank you for contacting Akshay\'s Cart! We\'ll get back to you soon.');
+            window.location.href = 'my-orders.html';
+        });
+
+        // Contact form
+        $('#contact-form').submit(function (e) {
+            e.preventDefault();
+            showMessage('Thank you for contacting Bite Box! We\'ll get back to you soon.');
             this.reset();
         });
     }
@@ -167,21 +188,23 @@ $(document).ready(function() {
     function addToCart(itemId) {
         const item = menuItems.find(item => item.id === itemId);
         const existingItem = cart.find(cartItem => cartItem.id === itemId);
-        
+
         if (existingItem) {
             existingItem.quantity += 1;
         } else {
             cart.push({ ...item, quantity: 1 });
         }
 
+        saveCartToStorage();
         updateCartDisplay();
-        showMessage(`${item.name} added to Akshay's Cart!`);
+        showMessage(`${item.name} added to Bite Box!`);
     }
 
     function increaseQuantity(itemId) {
         const item = cart.find(cartItem => cartItem.id === itemId);
         if (item) {
             item.quantity += 1;
+            saveCartToStorage();
             updateCartDisplay();
         }
     }
@@ -191,19 +214,21 @@ $(document).ready(function() {
         const item = cart.find(cartItem => cartItem.id === itemId);
         if (item) {
             item.quantity -= 1;
-            
+
             // If quantity reaches 0, remove the item from cart
             if (item.quantity <= 0) {
                 cart = cart.filter(cartItem => cartItem.id !== itemId);
                 showMessage('Item removed from cart');
             }
-            
+
+            saveCartToStorage();
             updateCartDisplay();
         }
     }
 
     function removeFromCart(itemId) {
         cart = cart.filter(item => item.id !== itemId);
+        saveCartToStorage();
         updateCartDisplay();
         showMessage('Item removed from cart');
     }
@@ -212,12 +237,12 @@ $(document).ready(function() {
     function updateCartDisplay() {
         const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
         const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-        
+
         $('#cart-count').text(cartCount);
         $('#cart-total').text(cartTotal);
-        
+
         const cartItemsContainer = $('#cart-items');
-        
+
         if (cart.length === 0) {
             cartItemsContainer.html('<p class="text-center text-muted">Your cart is empty</p>');
             $('#checkout-btn').prop('disabled', true);
@@ -246,24 +271,45 @@ $(document).ready(function() {
                     </button>
                 </div>
             `).join('');
-            
+
             cartItemsContainer.html(cartHTML);
             $('#checkout-btn').prop('disabled', false);
         }
     }
 
-    // Checkout
+    // Checkout - redirect to checkout page
     function checkout() {
-        const total = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-        $('#checkout-btn').html('<i class="fas fa-spinner fa-spin me-2"></i>Processing...');
-        
-        setTimeout(() => {
-            cart = [];
-            updateCartDisplay();
-            $('#cartModal').modal('hide');
-            showMessage(`Order placed successfully with Akshay's Cart! Total: ₹${total}. Your delicious food will be delivered in 30 minutes.`);
-            $('#checkout-btn').html('Proceed to Checkout');
-        }, 1000);
+        if (cart.length === 0) {
+            showMessage('Your cart is empty!', 'error');
+            return;
+        }
+
+        // Save cart to localStorage for checkout page
+        saveCartToStorage();
+
+        // Close cart modal
+        $('#cartModal').modal('hide');
+
+        // Redirect to checkout page
+        window.location.href = 'checkout.html';
+    }
+
+    // Clear cart function
+    function clearCart() {
+        cart = [];
+        localStorage.removeItem('cart');
+        updateCartDisplay();
+        showMessage('Cart cleared successfully!');
+    }
+
+    // Get cart total
+    function getCartTotal() {
+        return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    }
+
+    // Get cart count
+    function getCartCount() {
+        return cart.reduce((total, item) => total + item.quantity, 0);
     }
 
     // Show message
@@ -275,7 +321,7 @@ $(document).ready(function() {
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         `);
-        
+
         $('body').append(alert);
         setTimeout(() => alert.alert('close'), 2500);
     }
@@ -295,23 +341,23 @@ $(document).ready(function() {
         ];
 
         placeholders.forEach(img => {
-            $(`img[src="images/${img.name}"]`).on('error', function() {
+            $(`img[src="images/${img.name}"]`).on('error', function () {
                 $(this).attr('src', `https://via.placeholder.com/${img.size}/${img.color}/ffffff?text=${img.text}`);
             });
         });
     }
 
     // Scroll effects and navigation highlighting
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         const scrollTop = $(window).scrollTop();
-        
+
         // Update active navigation
-        $('section').each(function() {
+        $('section').each(function () {
             const section = $(this);
             const sectionTop = section.offset().top - 100;
             const sectionBottom = sectionTop + section.outerHeight();
             const sectionId = section.attr('id');
-            
+
             if (scrollTop >= sectionTop && scrollTop < sectionBottom) {
                 $('.nav-link').removeClass('active');
                 $(`.nav-link[href="#${sectionId}"]`).addClass('active');
@@ -319,6 +365,67 @@ $(document).ready(function() {
         });
     });
 
+    // Global functions for external access
+    window.BiteBox = {
+        addToCart: addToCart,
+        removeFromCart: removeFromCart,
+        clearCart: clearCart,
+        getCart: () => cart,
+        getCartTotal: getCartTotal,
+        getCartCount: getCartCount,
+        menuItems: menuItems
+    };
+
     // Initialize the application
     init();
+});
+
+// Global utility functions
+function navigateToOrders() {
+    window.location.href = 'my-orders.html';
+}
+
+function navigateToTracking(orderId) {
+    window.location.href = `order-tracking.html?orderId=${orderId}`;
+}
+
+function navigateToCheckout() {
+    window.location.href = 'checkout.html';
+}
+
+// Handle page-specific functionality
+$(document).ready(function () {
+    // Add navigation links to header if they don't exist
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (currentPage === 'index.html' || currentPage === '') {
+        // Add My Orders link to navigation if not present
+        if (!$('.nav-link[href="my-orders.html"]').length) {
+            const ordersLink = `
+                <li class="nav-item">
+                    <a class="nav-link" href="my-orders.html">
+                        <i class="fas fa-list me-1"></i>My Orders
+                    </a>
+                </li>
+            `;
+            $('.navbar-nav').append(ordersLink);
+        }
+    }
+
+    // Handle back navigation
+    $('.back-to-menu').click(function (e) {
+        e.preventDefault();
+        window.location.href = 'index.html#menu';
+    });
+
+    // Handle order success redirect from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('orderSuccess') === 'true') {
+        const orderId = urlParams.get('orderId');
+        if (orderId) {
+            setTimeout(() => {
+                window.location.href = `order-tracking.html?orderId=${orderId}`;
+            }, 2000);
+        }
+    }
 });

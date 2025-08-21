@@ -1,5 +1,5 @@
 ===============================================================================
-                    AKSHAY'S CART - HTML WEBSITE DOCUMENTATION
+                    BITE BOX - HTML WEBSITE DOCUMENTATION
                     Complete Guide to Tags, CSS, JavaScript & Queries
 ===============================================================================
 
@@ -16,7 +16,7 @@ TABLE OF CONTENTS:
 10. Security Considerations
 
 ===============================================================================
-1. HTML TAGS USED IN AKSHAY'S CART
+1. HTML TAGS USED IN BITE BOX
 ===============================================================================
 
 STRUCTURAL TAGS:
@@ -348,7 +348,7 @@ FLEXIBLE LAYOUTS:
 
 
 ===============================================================================
-COMMON FUNCTIONS IN AKSHAY'S CART
+COMMON FUNCTIONS IN BITE BOX
 ===============================================================================
 
 // Add product to cart
