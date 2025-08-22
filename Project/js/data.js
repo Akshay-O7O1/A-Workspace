@@ -6,6 +6,7 @@ const personalInfo = {
     email: "akshaypandey0701@gmail.com",
     phone: "+91 7048806614",
     location: "Vadodara, Gujarat, India",
+    profileImage: "images/profile.jpg", // Add your profile image path here
     
     // Social Links - Update with your actual profiles
     socialLinks: {

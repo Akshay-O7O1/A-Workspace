@@ -25,11 +25,18 @@ function initializeWebsite() {
 
 // Load personal information
 function loadPersonalInfo() {
-    // Update name and role
+    // Update name and role (main hero section)
     document.getElementById('name').textContent = personalInfo.name;
     document.getElementById('role').textContent = personalInfo.role;
     document.getElementById('description').textContent = personalInfo.description;
     document.getElementById('footer-name').textContent = personalInfo.name;
+    
+    // Update profile section (left side)
+    document.getElementById('profile-name').textContent = personalInfo.name;
+    document.getElementById('profile-role').textContent = personalInfo.role;
+    document.getElementById('profile-email').textContent = personalInfo.email;
+    document.getElementById('profile-phone').textContent = personalInfo.phone;
+    document.getElementById('profile-location').textContent = personalInfo.location;
     
     // Update about section
     document.getElementById('about-description').textContent = personalInfo.aboutDescription;
@@ -44,11 +51,17 @@ function loadPersonalInfo() {
     document.getElementById('contact-phone').textContent = personalInfo.phone;
     document.getElementById('contact-location').textContent = personalInfo.location;
     
-    // Update social links
+    // Update social links (main hero section)
     document.getElementById('github-link').href = personalInfo.socialLinks.github;
     document.getElementById('linkedin-link').href = personalInfo.socialLinks.linkedin;
     document.getElementById('twitter-link').href = personalInfo.socialLinks.twitter;
     document.getElementById('email-link').href = personalInfo.socialLinks.email;
+    
+    // Update profile social links (left side)
+    document.getElementById('profile-github-link').href = personalInfo.socialLinks.github;
+    document.getElementById('profile-linkedin-link').href = personalInfo.socialLinks.linkedin;
+    document.getElementById('profile-twitter-link').href = personalInfo.socialLinks.twitter;
+    document.getElementById('profile-email-link').href = personalInfo.socialLinks.email;
 }
 
 // Load skills dynamically

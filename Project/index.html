@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
@@ -32,21 +35,51 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Hi, I'm <span class="highlight" id="name">Akshay Pandey</span></h1>
-            <p class="hero-subtitle" id="role">Full Stack Developer</p>
-            <p class="hero-description" id="description">
-                Passionate about creating innovative web solutions and bringing ideas to life through code.
-            </p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        <div class="hero-container">
+            <!-- Left Side - Profile Photo and Basic Details -->
+            <div class="hero-left">
+                <div class="profile-photo">
+                    <img src="C:\A-Workspace\Project\images\profile.jpg" alt="Profile Photo" id="profile-image">
+                </div>
+                <div class="basic-details">
+                    <h2 id="profile-name">Akshay Pandey</h2>
+                    <p class="profile-role" id="profile-role">Full Stack Developer</p>
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span id="profile-email">akshaypandey0701@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span id="profile-phone">+91 7048806614</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="profile-location">Vadodara, Gujarat, India</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="social-links">
-                <a href="#" id="github-link" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" id="linkedin-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="#" id="twitter-link" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" id="email-link"><i class="fas fa-envelope"></i></a>
+
+            <!-- Right Side - Main Content -->
+            <div class="hero-right">
+                <div class="hero-content">
+                    <h1 class="hero-title">Hi, I'm <span class="highlight" id="name">Akshay Pandey</span></h1>
+                    <p class="hero-subtitle" id="role">Full Stack Developer</p>
+                    <p class="hero-description" id="description">
+                        Passionate about creating innovative web solutions and bringing ideas to life through code.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" id="github-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" id="linkedin-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" id="twitter-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" id="email-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -58,7 +91,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <p id="about-description">
-                        I'm a passionate developer with experience in creating dynamic web applications. 
+                        I'm a passionate developer with experience in creating dynamic web applications.
                         I love solving complex problems and learning new technologies.
                     </p>
                     <div class="about-stats">
@@ -148,4 +181,5 @@
     <script src="js/data.js"></script>
     <script src="js/script.js"></script>
 </body>
+
 </html>

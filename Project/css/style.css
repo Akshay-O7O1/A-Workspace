@@ -84,8 +84,8 @@ body {
     justify-content: center;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    text-align: center;
     position: relative;
+    padding: 80px 0;
 }
 
 .hero::before {
@@ -98,11 +98,153 @@ body {
     background: rgba(0, 0, 0, 0.3);
 }
 
-.hero-content {
+.hero-container {
     position: relative;
     z-index: 1;
-    max-width: 800px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
     padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Left Side - Profile */
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.05);
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Placeholder for profile image when no image is loaded */
+.profile-photo:not(:has(img[src*="profile"])):before,
+.profile-photo img[src*="profile.jpg"]:not([src]):before {
+    content: '👤';
+    font-size: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+}
+
+.profile-photo img {
+    position: relative;
+    z-index: 1;
+}
+
+/* Show placeholder when image fails to load */
+.profile-photo img[src="images/profile.jpg"] {
+    opacity: 0;
+}
+
+.profile-photo:has(img[src="images/profile.jpg"]):before {
+    content: '👤';
+    font-size: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.basic-details h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #f39c12;
+}
+
+.profile-role {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.profile-info {
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.info-item i {
+    width: 20px;
+    color: #f39c12;
+}
+
+.profile-social {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.profile-social a {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.profile-social a:hover {
+    background: #f39c12;
+    transform: translateY(-3px);
+}
+
+/* Right Side - Main Content */
+.hero-right {
+    text-align: left;
+}
+
+.hero-content {
+    max-width: 600px;
 }
 
 .hero-title {
@@ -489,6 +631,25 @@ section {
 
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .hero-right {
+        text-align: center;
+    }
+
+    .profile-photo {
+        width: 200px;
+        height: 200px;
+    }
+
+    .basic-details h2 {
+        font-size: 1.5rem;
     }
 
     .hero-title {
