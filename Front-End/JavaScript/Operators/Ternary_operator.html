@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ternary Operator in JavaScript</title>
+    <link rel="stylesheet" href="operators-style.css">
+</head>
+<body class="ternary">
+    <div class="container">
+        <h1>Ternary Operator in JavaScript</h1>
+        
+        <div class="syntax">
+            condition ? valueIfTrue : valueIfFalse
+        </div>
+        
+        <div class="operator-section">
+            <h3>Basic Ternary Operator</h3>
+            <p>The ternary operator is a shorthand for if-else statements</p>
+            <div class="code">let result = age >= 18 ? "Adult" : "Minor";</div>
+            <button onclick="demonstrateBasicTernary()">Test Basic Ternary</button>
+            <div id="basicResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Interactive Age Checker</h3>
+            <p>Enter an age to see the ternary operator in action</p>
+            <div class="input-section">
+                <input type="number" id="ageInput" placeholder="Enter age" value="20">
+                <button onclick="checkAge()">Check Age</button>
+            </div>
+            <div id="ageResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Nested Ternary Operators</h3>
+            <p>Multiple conditions can be chained together</p>
+            <div class="code">let grade = score >= 90 ? "A" : score >= 80 ? "B" : score >= 70 ? "C" : "F";</div>
+            <button onclick="demonstrateNestedTernary()">Test Nested Ternary</button>
+            <div id="nestedResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Interactive Grade Calculator</h3>
+            <p>Enter a score to see nested ternary operators</p>
+            <div class="input-section">
+                <input type="number" id="scoreInput" placeholder="Enter score (0-100)" value="85">
+                <button onclick="calculateGrade()">Calculate Grade</button>
+            </div>
+            <div id="gradeResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Ternary with Functions</h3>
+            <p>Ternary operators can call different functions</p>
+            <div class="code">isLoggedIn ? showDashboard() : showLoginForm();</div>
+            <button onclick="demonstrateFunctionTernary()">Test Function Ternary</button>
+            <div id="functionResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Ternary for Default Values</h3>
+            <p>Using ternary to provide fallback values</p>
+            <div class="code">let username = user.name ? user.name : "Guest";</div>
+            <button onclick="demonstrateDefaultValues()">Test Default Values</button>
+            <div id="defaultResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Complex Ternary Examples</h3>
+            <p>Real-world scenarios using ternary operators</p>
+            <button onclick="demonstrateComplexTernary()">Test Complex Examples</button>
+            <div id="complexResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Ternary vs If-Else Comparison</h3>
+            <p>See the difference between ternary and traditional if-else</p>
+            <button onclick="demonstrateComparison()">Show Comparison</button>
+            <div id="comparisonResult" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function demonstrateBasicTernary() {
+            let age1 = 25;
+            let age2 = 16;
+            
+            let status1 = age1 >= 18 ? "Adult" : "Minor";
+            let status2 = age2 >= 18 ? "Adult" : "Minor";
+            
+            document.getElementById('basicResult').innerHTML = 
+                `Age ${age1}: ${status1}<br>` +
+                `Age ${age2}: ${status2}`;
+        }
+
+        function checkAge() {
+            let age = parseInt(document.getElementById('ageInput').value);
+            
+            if (isNaN(age)) {
+                document.getElementById('ageResult').innerHTML = "Please enter a valid age";
+                return;
+            }
+            
+            let status = age >= 18 ? "Adult" : "Minor";
+            let canVote = age >= 18 ? "Can vote" : "Cannot vote";
+            let canDrink = age >= 21 ? "Can drink alcohol" : "Cannot drink alcohol";
+            
+            document.getElementById('ageResult').innerHTML = 
+                `Age: ${age}<br>` +
+                `Status: ${status}<br>` +
+                `Voting: ${canVote}<br>` +
+                `Drinking: ${canDrink}`;
+        }
+
+        function demonstrateNestedTernary() {
+            let scores = [95, 87, 73, 65, 45];
+            let results = [];
+            
+            scores.forEach(score => {
+                let grade = score >= 90 ? "A" : 
+                           score >= 80 ? "B" : 
+                           score >= 70 ? "C" : 
+                           score >= 60 ? "D" : "F";
+                results.push(`Score ${score}: Grade ${grade}`);
+            });
+            
+            document.getElementById('nestedResult').innerHTML = results.join('<br>');
+        }
+
+        function calculateGrade() {
+            let score = parseInt(document.getElementById('scoreInput').value);
+            
+            if (isNaN(score) || score < 0 || score > 100) {
+                document.getElementById('gradeResult').innerHTML = "Please enter a valid score (0-100)";
+                return;
+            }
+            
+            let grade = score >= 90 ? "A" : 
+                       score >= 80 ? "B" : 
+                       score >= 70 ? "C" : 
+                       score >= 60 ? "D" : "F";
+            
+            let message = score >= 70 ? "Passing grade!" : "Need to improve";
+            let emoji = score >= 90 ? "🎉" : score >= 70 ? "👍" : "📚";
+            
+            document.getElementById('gradeResult').innerHTML = 
+                `Score: ${score}<br>` +
+                `Grade: ${grade} ${emoji}<br>` +
+                `Status: ${message}`;
+        }
+
+        function demonstrateFunctionTernary() {
+            function showDashboard() {
+                return "Welcome to your dashboard!";
+            }
+            
+            function showLoginForm() {
+                return "Please log in to continue";
+            }
+            
+            let isLoggedIn1 = true;
+            let isLoggedIn2 = false;
+            
+            let result1 = isLoggedIn1 ? showDashboard() : showLoginForm();
+            let result2 = isLoggedIn2 ? showDashboard() : showLoginForm();
+            
+            document.getElementById('functionResult').innerHTML = 
+                `User logged in: ${result1}<br>` +
+                `User not logged in: ${result2}`;
+        }
+
+        function demonstrateDefaultValues() {
+            let user1 = { name: "John", email: "john@example.com" };
+            let user2 = { email: "anonymous@example.com" };
+            let user3 = null;
+            
+            let username1 = user1 && user1.name ? user1.name : "Guest";
+            let username2 = user2 && user2.name ? user2.name : "Guest";
+            let username3 = user3 && user3.name ? user3.name : "Guest";
+            
+            let displayName1 = user1 ? (user1.name || "Anonymous User") : "Not logged in";
+            
+            document.getElementById('defaultResult').innerHTML = 
+                `User with name: ${username1}<br>` +
+                `User without name: ${username2}<br>` +
+                `Null user: ${username3}<br>` +
+                `Complex check: ${displayName1}`;
+        }
+
+        function demonstrateComplexTernary() {
+            let weather = "sunny";
+            let temperature = 75;
+            let hasUmbrella = false;
+            
+            let outfit = weather === "rainy" ? 
+                        (hasUmbrella ? "Light jacket" : "Raincoat") : 
+                        temperature > 80 ? "T-shirt" : 
+                        temperature > 60 ? "Light sweater" : "Heavy jacket";
+            
+            let activity = weather === "sunny" && temperature > 70 ? 
+                          "Go to the beach" : 
+                          weather === "rainy" ? "Stay inside" : "Go for a walk";
+            
+            let mood = temperature > 75 ? "😎" : 
+                      temperature > 60 ? "🙂" : 
+                      temperature > 40 ? "😐" : "🥶";
+            
+            document.getElementById('complexResult').innerHTML = 
+                `Weather: ${weather}, Temperature: ${temperature}°F<br>` +
+                `Recommended outfit: ${outfit}<br>` +
+                `Suggested activity: ${activity}<br>` +
+                `Mood: ${mood}`;
+        }
+
+        function demonstrateComparison() {
+            let score = 85;
+            
+            // Using ternary operator
+            let ternaryResult = score >= 90 ? "Excellent" : score >= 80 ? "Good" : score >= 70 ? "Average" : "Poor";
+            
+            // Using if-else (for comparison)
+            let ifElseResult;
+            if (score >= 90) {
+                ifElseResult = "Excellent";
+            } else if (score >= 80) {
+                ifElseResult = "Good";
+            } else if (score >= 70) {
+                ifElseResult = "Average";
+            } else {
+                ifElseResult = "Poor";
+            }
+            
+            document.getElementById('comparisonResult').innerHTML = 
+                `Score: ${score}<br><br>` +
+                `<strong>Ternary operator:</strong><br>` +
+                `let result = score >= 90 ? "Excellent" : score >= 80 ? "Good" : score >= 70 ? "Average" : "Poor";<br>` +
+                `Result: ${ternaryResult}<br><br>` +
+                `<strong>If-else equivalent:</strong><br>` +
+                `if (score >= 90) { result = "Excellent"; }<br>` +
+                `else if (score >= 80) { result = "Good"; }<br>` +
+                `else if (score >= 70) { result = "Average"; }<br>` +
+                `else { result = "Poor"; }<br>` +
+                `Result: ${ifElseResult}`;
+        }
+    </script>
+</body>
+</html>

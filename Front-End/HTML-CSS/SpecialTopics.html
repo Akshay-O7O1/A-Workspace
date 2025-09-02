@@ -1,0 +1,60 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Features Demo</title>
+  <style>
+    /* 1. Visited link styling */
+    a:link {
+      color: blue;
+    }
+    a:visited {
+      color: purple;
+    }
+
+    /* 2. Scrollable table */
+    .table-container {
+      max-height: 200px;
+      overflow: auto;
+      border: 1px solid #ccc;
+    }
+    table {
+      width: 50%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #888;
+      padding: 8px;
+      text-align: left;
+    }
+
+    /* 3. Custom cursor */
+    .custom-cursor {
+      cursor: wait;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 class="custom-cursor">Hover Over This Heading</h2>
+
+  <p>Visit this <a href="https://example.com">example link</a> to see visited link color.</p>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Age</th><th>City</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Alice</td><td>24</td><td>Delhi</td></tr>
+        <tr><td>Bob</td><td>30</td><td>Mumbai</td></tr>
+        <tr><td>Charlie</td><td>28</td><td>Chennai</td></tr>
+        <tr><td>Daisy</td><td>35</td><td>Kolkata</td></tr>
+        <tr><td>Ethan</td><td>22</td><td>Pune</td></tr>
+        <tr><td>Akshay</td><td>26</td><td>Kolkata</td></tr>
+        <tr><td>Pandey</td><td>22</td><td>Pune</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

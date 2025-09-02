@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Operators in JavaScript</title>
+    <link rel="stylesheet" href="operators-style.css">
+</head>
+
+<body class="assignment">
+    <div class="container">
+        <h1>Assignment Operators in JavaScript</h1>
+
+        <div class="operator-section">
+            <h3>Simple Assignment (=)</h3>
+            <p>Assigns a value to a variable</p>
+            <div class="code">let x = 10;</div>
+            <button onclick="demonstrateSimpleAssignment()">Test Simple Assignment</button>
+            <div id="simpleResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Addition Assignment (+=)</h3>
+            <p>Adds a value to a variable and assigns the result</p>
+            <div class="code">x += 5; // equivalent to x = x + 5;</div>
+            <button onclick="demonstrateAdditionAssignment()">Test Addition Assignment</button>
+            <div id="additionAssignResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Subtraction Assignment (-=)</h3>
+            <p>Subtracts a value from a variable and assigns the result</p>
+            <div class="code">x -= 3; // equivalent to x = x - 3;</div>
+            <button onclick="demonstrateSubtractionAssignment()">Test Subtraction Assignment</button>
+            <div id="subtractionAssignResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Multiplication Assignment (*=)</h3>
+            <p>Multiplies a variable by a value and assigns the result</p>
+            <div class="code">x *= 2; // equivalent to x = x * 2;</div>
+            <button onclick="demonstrateMultiplicationAssignment()">Test Multiplication Assignment</button>
+            <div id="multiplicationAssignResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Division Assignment (/=)</h3>
+            <p>Divides a variable by a value and assigns the result</p>
+            <div class="code">x /= 4; // equivalent to x = x / 4;</div>
+            <button onclick="demonstrateDivisionAssignment()">Test Division Assignment</button>
+            <div id="divisionAssignResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Modulus Assignment (%=)</h3>
+            <p>Gets the remainder of division and assigns it to the variable</p>
+            <div class="code">x %= 3; // equivalent to x = x % 3;</div>
+            <button onclick="demonstrateModulusAssignment()">Test Modulus Assignment</button>
+            <div id="modulusAssignResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Exponentiation Assignment (**=)</h3>
+            <p>Raises a variable to a power and assigns the result</p>
+            <div class="code">x **= 2; // equivalent to x = x ** 2;</div>
+            <button onclick="demonstrateExponentiationAssignment()">Test Exponentiation Assignment</button>
+            <div id="exponentiationAssignResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Logical Assignment Operators</h3>
+            <p>Combines logical operations with assignment</p>
+            <div class="code">x ||= 5; // x = x || 5;<br>x &&= 10; // x = x && 10;<br>x ??= 15; // x = x ?? 15;</div>
+            <button onclick="demonstrateLogicalAssignment()">Test Logical Assignment</button>
+            <div id="logicalAssignResult" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function demonstrateSimpleAssignment() {
+            let x = 25;
+            let y = "Hello";
+            let z = true;
+
+            document.getElementById('simpleResult').innerHTML =
+                `x = 25; // x is now ${x}<br>` +
+                `y = "Hello"; // y is now "${y}"<br>` +
+                `z = true; // z is now ${z}`;
+        }
+
+        function demonstrateAdditionAssignment() {
+            let x = 10;
+            let original = x;
+            x += 5;
+
+            let str = "Hello";
+            str += " World";
+
+            document.getElementById('additionAssignResult').innerHTML =
+                `x starts as ${original}<br>` +
+                `x += 5; // x is now ${x}<br>` +
+                `str = "Hello"; str += " World"; // str is now "${str}"`;
+        }
+
+        function demonstrateSubtractionAssignment() {
+            let x = 20;
+            let original = x;
+            x -= 7;
+
+            document.getElementById('subtractionAssignResult').innerHTML =
+                `x starts as ${original}<br>` +
+                `x -= 7; // x is now ${x}`;
+        }
+
+        function demonstrateMultiplicationAssignment() {
+            let x = 6;
+            let original = x;
+            x *= 4;
+
+            document.getElementById('multiplicationAssignResult').innerHTML =
+                `x starts as ${original}<br>` +
+                `x *= 4; // x is now ${x}`;
+        }
+
+        function demonstrateDivisionAssignment() {
+            let x = 50;
+            let original = x;
+            x /= 10;
+
+            document.getElementById('divisionAssignResult').innerHTML =
+                `x starts as ${original}<br>` +
+                `x /= 10; // x is now ${x}`;
+        }
+
+        function demonstrateModulusAssignment() {
+            let x = 17;
+            let original = x;
+            x %= 5;
+
+            document.getElementById('modulusAssignResult').innerHTML =
+                `x starts as ${original}<br>` +
+                `x %= 5; // x is now ${x} (remainder of 17 ÷ 5)`;
+        }
+
+        function demonstrateExponentiationAssignment() {
+            let x = 3;
+            let original = x;
+            x **= 3;
+
+            document.getElementById('exponentiationAssignResult').innerHTML =
+                `x starts as ${original}<br>` +
+                `x **= 3; // x is now ${x} (3 to the power of 3)`;
+        }
+
+        function demonstrateLogicalAssignment() {
+            let a = null;
+            let b = 0;
+            let c = "existing";
+
+            // Logical OR assignment
+            a ||= "default value";
+
+            // Logical AND assignment  
+            let d = "test";
+            d &&= "modified";
+
+            // Nullish coalescing assignment
+            let e = null;
+            let f = "not null";
+            e ??= "nullish default";
+            f ??= "won't be used";
+
+            document.getElementById('logicalAssignResult').innerHTML =
+                `a = null; a ||= "default value"; // a is now "${a}"<br>` +
+                `d = "test"; d &&= "modified"; // d is now "${d}"<br>` +
+                `e = null; e ??= "nullish default"; // e is now "${e}"<br>` +
+                `f = "not null"; f ??= "won't be used"; // f is still "${f}"`;
+        }
+    </script>
+</body>
+
+</html>

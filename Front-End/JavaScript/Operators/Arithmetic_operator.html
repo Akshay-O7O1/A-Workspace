@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Operators in JavaScript</title>
+    <link rel="stylesheet" href="operators-style.css">
+</head>
+<body class="arithmetic">
+    <div class="container">
+        <h1>Arithmetic Operators in JavaScript</h1>
+        
+        <div class="operator-section">
+            <h3>Addition (+)</h3>
+            <p>Adds two numbers together</p>
+            <button onclick="demonstrateAddition()">Test Addition</button>
+            <div id="additionResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Subtraction (-)</h3>
+            <p>Subtracts the second number from the first</p>
+            <button onclick="demonstrateSubtraction()">Test Subtraction</button>
+            <div id="subtractionResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Multiplication (*)</h3>
+            <p>Multiplies two numbers</p>
+            <button onclick="demonstrateMultiplication()">Test Multiplication</button>
+            <div id="multiplicationResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Division (/)</h3>
+            <p>Divides the first number by the second</p>
+            <button onclick="demonstrateDivision()">Test Division</button>
+            <div id="divisionResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Modulus (%)</h3>
+            <p>Returns the remainder of division</p>
+            <button onclick="demonstrateModulus()">Test Modulus</button>
+            <div id="modulusResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Exponentiation (**)</h3>
+            <p>Raises the first number to the power of the second</p>
+            <button onclick="demonstrateExponentiation()">Test Exponentiation</button>
+            <div id="exponentiationResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Increment (++)</h3>
+            <p>Increases a number by 1</p>
+            <button onclick="demonstrateIncrement()">Test Increment</button>
+            <div id="incrementResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Decrement (--)</h3>
+            <p>Decreases a number by 1</p>
+            <button onclick="demonstrateDecrement()">Test Decrement</button>
+            <div id="decrementResult" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function demonstrateAddition() {
+            let a = 15;
+            let b = 25;
+            let result = a + b;
+            document.getElementById('additionResult').innerHTML = 
+                `${a} + ${b} = ${result}`;
+        }
+
+        function demonstrateSubtraction() {
+            let a = 50;
+            let b = 20;
+            let result = a - b;
+            document.getElementById('subtractionResult').innerHTML = 
+                `${a} - ${b} = ${result}`;
+        }
+
+        function demonstrateMultiplication() {
+            let a = 8;
+            let b = 7;
+            let result = a * b;
+            document.getElementById('multiplicationResult').innerHTML = 
+                `${a} * ${b} = ${result}`;
+        }
+
+        function demonstrateDivision() {
+            let a = 100;
+            let b = 4;
+            let result = a / b;
+            document.getElementById('divisionResult').innerHTML = 
+                `${a} / ${b} = ${result}`;
+        }
+
+        function demonstrateModulus() {
+            let a = 17;
+            let b = 5;
+            let result = a % b;
+            document.getElementById('modulusResult').innerHTML = 
+                `${a} % ${b} = ${result} (remainder)`;
+        }
+
+        function demonstrateExponentiation() {
+            let a = 3;
+            let b = 4;
+            let result = a ** b;
+            document.getElementById('exponentiationResult').innerHTML = 
+                `${a} ** ${b} = ${result}`;
+        }
+
+        function demonstrateIncrement() {
+            let a = 10;
+            let preIncrement = ++a;
+            let b = 10;
+            let postIncrement = b++;
+            document.getElementById('incrementResult').innerHTML = 
+                `Pre-increment: ++10 = ${preIncrement}<br>Post-increment: 10++ = ${postIncrement} (then becomes ${b})`;
+        }
+
+        function demonstrateDecrement() {
+            let a = 10;
+            let preDecrement = --a;
+            let b = 10;
+            let postDecrement = b--;
+            document.getElementById('decrementResult').innerHTML = 
+                `Pre-decrement: --10 = ${preDecrement}<br>Post-decrement: 10-- = ${postDecrement} (then becomes ${b})`;
+        }
+    </script>
+</body>
+</html>

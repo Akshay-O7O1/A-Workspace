@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstraSoft TECHNOLOGIES - IT Solutions & Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <img src="astrasoft-logo.jpg" alt="AstraSoft TECHNOLOGIES Logo" width="40" height="40"
+                            style="border-radius: 8px;">
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">AstraSoft</span>
+                        <span class="logo-accent">TECHNOLOGIES</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Products</a></li>
+                    <li><a href="#testimonials">Clients</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="nav-cta">Get Started</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Reinvent your business with <span class="accent-text">intelligent technology</span></h1>
+                    <p>We help organizations transform through cutting-edge digital solutions, cloud innovation, and
+                        strategic technology consulting to unlock new value and accelerate growth.</p>
+                    <div class="hero-buttons">
+                        <button class="cta-button primary" onclick="scrollToSection('contact')">
+                            Start Your Journey
+                        </button>
+                        <button class="cta-button secondary" onclick="scrollToSection('services')">
+                            Explore Services
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Projects Delivered</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-visual">
+                        <div class="tech-grid">
+                            <div class="tech-item">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our <span class="accent-text">Capabilities</span></h2>
+                <p class="section-subtitle">We deliver end-to-end technology solutions that drive business
+                    transformation and create lasting value for our clients across industries.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <div class="service-icon-bg">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Frontend Development</h3>
+                        <p>Modern, responsive web applications using React, Vue, Angular, and cutting-edge technologies
+                            for exceptional user experiences.</p>
+                        <div class="service-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Angular</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <div class="service-icon-bg">
+                            <i class="fas fa-server"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Backend Development</h3>
+                        <p>Robust server-side solutions with Node.js, Python, Java, and cloud technologies to power your
+                            applications efficiently.</p>
+                        <div class="service-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Java</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <div class="service-icon-bg">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Mobile Applications</h3>
+                        <p>Native and cross-platform mobile apps for iOS and Android using React Native, Flutter, and
+                            native development.</p>
+                        <div class="service-tech">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Swift</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <div class="service-icon-bg">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Cloud Solutions</h3>
+                        <p>Scalable cloud infrastructure and deployment solutions using AWS, Azure, and Google Cloud
+                            Platform.</p>
+                        <div class="service-tech">
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Azure</span>
+                            <span class="tech-tag">GCP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <div class="service-icon-bg">
+                            <i class="fas fa-database"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Data & Analytics</h3>
+                        <p>Intelligent data solutions with AI/ML capabilities, advanced analytics, and business
+                            intelligence platforms.</p>
+                        <div class="service-tech">
+                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">BigData</span>
+                            <span class="tech-tag">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <div class="service-icon-bg">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Security & DevOps</h3>
+                        <p>Comprehensive security implementation and DevOps practices to ensure your applications are
+                            secure and reliable.</p>
+                        <div class="service-tech">
+                            <span class="tech-tag">DevOps</span>
+                            <span class="tech-tag">Security</span>
+                            <span class="tech-tag">CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our <span class="accent-text">Products</span></h2>
+                <p class="section-subtitle">Discover our innovative product portfolio showcasing cutting-edge solutions
+                    in
+                    full-stack development, modern technologies, and creative problem-solving across various domains.
+                </p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-shopping-cart project-icon"></i>
+                        <div class="project-overlay">
+                            <div class="project-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">100%</span>
+                                    <span class="stat-desc">Responsive</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">Fast</span>
+                                    <span class="stat-desc">Performance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">E-Commerce Solution</div>
+                        <h3>AstraCommerce Pro</h3>
+                        <p>Enterprise-grade e-commerce platform with advanced features including real-time inventory
+                            management, secure payment processing, and intuitive user interface for seamless shopping
+                            experiences.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                        <div class="product-features">
+                            <div class="feature-item">✓ Multi-vendor Support</div>
+                            <div class="feature-item">✓ Real-time Analytics</div>
+                            <div class="feature-item">✓ Mobile Responsive</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="demo-btn">View Demo</button>
+                            <div class="project-tag">Enterprise Solution</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-brain project-icon"></i>
+                        <div class="project-overlay">
+                            <div class="project-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">AI</span>
+                                    <span class="stat-desc">Powered</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">Smart</span>
+                                    <span class="stat-desc">Analytics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">AI & Analytics</div>
+                        <h3>AstraAnalytics AI</h3>
+                        <p>Intelligent business intelligence platform with machine learning algorithms for predictive
+                            analytics, real-time insights, and automated decision-making capabilities for enterprises.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">D3.js</span>
+                        </div>
+                        <div class="product-features">
+                            <div class="feature-item">Predictive Analytics</div>
+                            <div class="feature-item">Custom Dashboards</div>
+                            <div class="feature-item">API Integration</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="demo-btn">View Demo</button>
+                            <div class="project-tag">AI-Powered</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-mobile-alt project-icon"></i>
+                        <div class="project-overlay">
+                            <div class="project-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">Cross</span>
+                                    <span class="stat-desc">Platform</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">Native</span>
+                                    <span class="stat-desc">Performance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Mobile Solutions</div>
+                        <h3>AstraMobile Suite</h3>
+                        <p>Comprehensive mobile application framework with native performance, offline capabilities,
+                            push
+                            notifications, and seamless user experience across iOS and Android platforms.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Redux</span>
+                            <span class="tech-tag">TypeScript</span>
+                        </div>
+                        <div class="product-features">
+                            <div class="feature-item">Offline Capability</div>
+                            <div class="feature-item">Push Notifications</div>
+                            <div class="feature-item">Biometric Auth</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="demo-btn">View Demo</button>
+                            <div class="project-tag">Cross-Platform</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-cloud project-icon"></i>
+                        <div class="project-overlay">
+                            <div class="project-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">99.9%</span>
+                                    <span class="stat-desc">Uptime</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">Auto</span>
+                                    <span class="stat-desc">Scaling</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Cloud Infrastructure</div>
+                        <h3>AstraCloud Enterprise</h3>
+                        <p>Enterprise-grade cloud infrastructure solution with microservices architecture, auto-scaling
+                            capabilities,
+                            containerized deployment, and comprehensive monitoring systems for mission-critical
+                            applications.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">Terraform</span>
+                        </div>
+                        <div class="product-features">
+                            <div class="feature-item">Auto-scaling</div>
+                            <div class="feature-item">99.9% Uptime</div>
+                            <div class="feature-item">Global CDN</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="demo-btn">View Demo</button>
+                            <div class="project-tag">Cloud-Native</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-graduation-cap project-icon"></i>
+                        <div class="project-overlay">
+                            <div class="project-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">Interactive</span>
+                                    <span class="stat-desc">Learning</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">Smart</span>
+                                    <span class="stat-desc">Progress</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">EdTech Solutions</div>
+                        <h3>AstraLearn Platform</h3>
+                        <p>Next-generation educational platform with personalized learning paths, interactive content
+                            delivery, progress tracking, and advanced analytics for modern educational institutions.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Express.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Socket.io</span>
+                        </div>
+                        <div class="product-features">
+                            <div class="feature-item">Interactive Learning</div>
+                            <div class="feature-item">Progress Tracking</div>
+                            <div class="feature-item">Multi-language</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="demo-btn">View Demo</button>
+                            <div class="project-tag">Learning Platform</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line project-icon"></i>
+                        <div class="project-overlay">
+                            <div class="project-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">Real</span>
+                                    <span class="stat-desc">Time</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">Data</span>
+                                    <span class="stat-desc">Insights</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Business Intelligence</div>
+                        <h3>AstraInsights Pro</h3>
+                        <p>Advanced business intelligence dashboard with real-time data processing, interactive
+                            visualizations,
+                            custom reporting, and predictive analytics for strategic data-driven decisions.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">D3.js</span>
+                        </div>
+                        <div class="product-features">
+                            <div class="feature-item">Real-time Data</div>
+                            <div class="feature-item">Custom Reports</div>
+                            <div class="feature-item">Data Export</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="demo-btn">View Demo</button>
+                            <div class="project-tag">Data Intelligence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Industries We <span class="accent-text">Transform</span></h2>
+                <p class="section-subtitle">We bring deep industry expertise and innovative technology solutions to help
+                    organizations across sectors achieve their digital transformation goals.</p>
+            </div>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Healthcare & Life Sciences</h3>
+                    <p>Digital health solutions, AI diagnostics, and patient care platforms</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Financial Services</h3>
+                    <p>Digital banking, fintech solutions, and regulatory compliance systems</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Retail & Consumer</h3>
+                    <p>E-commerce platforms, omnichannel experiences, and supply chain optimization</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Manufacturing</h3>
+                    <p>Industry 4.0, IoT solutions, and smart factory implementations</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education</h3>
+                    <p>EdTech platforms, learning management systems, and virtual classrooms</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Energy & Utilities</h3>
+                    <p>Smart grid solutions, renewable energy systems, and sustainability platforms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Reviews & Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "TechSolutions Pro delivered an exceptional e-commerce platform that exceeded our expectations.
+                        Their attention to detail and technical expertise is outstanding."
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-author">Sarah Johnson</div>
+                    <div class="testimonial-company">RetailMax Inc.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The mobile app they developed for our healthcare system has revolutionized how we serve our
+                        patients. Professional, reliable, and innovative team."
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-author">Dr. Michael Chen</div>
+                    <div class="testimonial-company">HealthCare Plus</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Working with TechSolutions Pro was a game-changer for our business. They delivered a robust
+                        backend system that handles our growing user base perfectly."
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-author">Emily Rodriguez</div>
+                    <div class="testimonial-company">StartupVenture</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Their full-stack development skills are impressive. From frontend design to backend
+                        architecture, they handled everything with professionalism."
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-author">James Wilson</div>
+                    <div class="testimonial-company">TechCorp Solutions</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The IoT dashboard they created for our manufacturing plant provides real-time insights that
+                        have improved our operational efficiency significantly."
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-author">Lisa Thompson</div>
+                    <div class="testimonial-company">Industrial Systems Ltd.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Excellent communication, timely delivery, and top-notch code quality. TechSolutions Pro is our
+                        go-to partner for all technology needs."
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-author">Robert Davis</div>
+                    <div class="testimonial-company">Digital Innovations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information Section -->
+    <section id="contact" class="info-section">
+        <div class="container">
+            <h2 class="section-title">Company Information</h2>
+            <div class="accordion-container">
+
+                <!-- About Us -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('about')">
+                        <h3><i class="fas fa-building"></i> About Us</h3>
+                        <i class="fas fa-chevron-down accordion-icon" id="about-icon"></i>
+                    </div>
+                    <div class="accordion-content" id="about-content">
+                        <div class="accordion-body">
+                            <p>AstraSoft TECHNOLOGIES is a leading technology solutions provider specializing in
+                                innovative digital transformation services. Founded with a vision to empower businesses
+                                through cutting-edge technology, we have been delivering exceptional results for over 15
+                                years.</p>
+
+                            <h4>Our Mission</h4>
+                            <p>To help organizations unlock their full potential through intelligent technology
+                                solutions that drive growth, efficiency, and innovation.</p>
+
+                            <h4>Our Vision</h4>
+                            <p>To be the trusted technology partner that transforms businesses and creates lasting value
+                                in the digital age.</p>
+
+                            <h4>Core Values</h4>
+                            <ul>
+                                <li>Innovation and Excellence</li>
+                                <li>Client-Centric Approach</li>
+                                <li>Integrity and Transparency</li>
+                                <li>Continuous Learning</li>
+                                <li>Collaborative Partnership</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('contact')">
+                        <h3><i class="fas fa-phone"></i> Contact Us</h3>
+                        <i class="fas fa-chevron-down accordion-icon" id="contact-icon"></i>
+                    </div>
+                    <div class="accordion-content" id="contact-content">
+                        <div class="accordion-body">
+                            <p>Ready to start your next project? Contact us today and let's discuss how we can help
+                                bring your ideas to life.</p>
+
+                            <div class="contact-item">
+                                <i class="fas fa-user"></i>
+                                <div>
+                                    <strong>Name:</strong> Alex Johnson<br />
+                                    <em>Lead Solutions Architect</em>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>Phone:</strong> +1 (555) 123-4567
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email:</strong> contact@techsolutionspro.com
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Address:</strong> 123 Tech Street, Innovation District, San Francisco, CA
+                                    94105
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>Business Hours:</strong> Mon-Fri 9:00 AM - 6:00 PM PST
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Privacy Statement -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('privacy')">
+                        <h3><i class="fas fa-shield-alt"></i> Privacy Statement</h3>
+                        <i class="fas fa-chevron-down accordion-icon" id="privacy-icon"></i>
+                    </div>
+                    <div class="accordion-content" id="privacy-content">
+                        <div class="accordion-body">
+                            <p>At AstraSoft TECHNOLOGIES, we are committed to protecting your privacy and personal
+                                information. This privacy statement outlines how we collect, use, and safeguard your
+                                data.</p>
+
+                            <h4>Information We Collect</h4>
+                            <ul>
+                                <li>Contact information (name, email, phone number)</li>
+                                <li>Project requirements and business information</li>
+                                <li>Website usage data and analytics</li>
+                                <li>Communication preferences and history</li>
+                            </ul>
+
+                            <h4>How We Use Your Information</h4>
+                            <ul>
+                                <li>To provide and improve our services</li>
+                                <li>To communicate about your projects</li>
+                                <li>To send relevant updates and information</li>
+                                <li>To analyze and enhance user experience</li>
+                            </ul>
+
+                            <h4>Data Protection</h4>
+                            <p>We implement industry-standard security measures to protect your data. We never sell or
+                                share your personal information with third parties without your explicit consent.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('terms')">
+                        <h3><i class="fas fa-file-contract"></i> Terms & Conditions</h3>
+                        <i class="fas fa-chevron-down accordion-icon" id="terms-icon"></i>
+                    </div>
+                    <div class="accordion-content" id="terms-content">
+                        <div class="accordion-body">
+                            <p>By using our services, you agree to the following terms and conditions:</p>
+
+                            <h4>Service Agreement</h4>
+                            <ul>
+                                <li>All projects are subject to written agreements</li>
+                                <li>Payment terms are specified in individual contracts</li>
+                                <li>Intellectual property rights are clearly defined</li>
+                                <li>Project timelines are mutually agreed upon</li>
+                            </ul>
+
+                            <h4>Liability</h4>
+                            <ul>
+                                <li>We provide services with professional care and skill</li>
+                                <li>Liability is limited as specified in service agreements</li>
+                                <li>Client data security is maintained to industry standards</li>
+                                <li>Force majeure events are handled as per industry standards</li>
+                            </ul>
+
+                            <h4>Intellectual Property</h4>
+                            <p>All deliverables and intellectual property rights are transferred to the client upon full
+                                payment, unless otherwise specified in the service agreement.</p>
+
+                            <p>For complete terms and conditions, please contact us directly.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AstraSoft Technologies. All rights reserved. | Crafting innovative digital solutions with
+                passion.
+            </p>
+        </div>
+        <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+            <p>Frontend • Backend • Mobile Applications • Cloud Solutions • DevOps</p>
+        </div>
+    </footer>
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Send us a Message</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your project requirements..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>span>

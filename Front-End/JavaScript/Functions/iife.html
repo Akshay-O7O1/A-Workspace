@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIFE - Immediately Invoked Function Expression</title>
+    <link rel="stylesheet" href="common-styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>IIFE Functions</h1>
+            <p>Immediately Invoked Function Expressions - Execute functions immediately</p>
+        </div>
+        
+        <div class="content">
+            <div class="demo-section">
+                <h3>Basic IIFE Syntax</h3>
+                <div class="code-block">
+// Traditional IIFE
+(function() {
+    console.log("This IIFE runs immediately!");
+})();
+
+// Arrow function IIFE
+(() => {
+    console.log("Arrow IIFE also runs immediately!");
+})();
+
+// IIFE with parameters
+((name, age) => {
+    console.log(`Hello ${name}, you are ${age} years old!`);
+})("John", 25);
+                </div>
+                <button class="btn" onclick="demonstrateBasicIIFE()">Run Basic IIFE Demo</button>
+                <div class="output" id="basicIIFEOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>IIFE for Module Pattern</h3>
+                <div class="code-block">
+const Calculator = (function() {
+    let result = 0;
+    
+    return {
+        add: function(x) { result += x; return this; },
+        subtract: function(x) { result -= x; return this; },
+        multiply: function(x) { result *= x; return this; },
+        divide: function(x) { 
+            if (x !== 0) result /= x; 
+            return this; 
+        },
+        getResult: function() { return result; },
+        reset: function() { result = 0; return this; }
+    };
+})();
+                </div>
+                <div class="input-group">
+                    <input type="number" id="calcValue" placeholder="Enter number" value="10">
+                    <button class="btn" onclick="addToCalc()">Add</button>
+                    <button class="btn" onclick="subtractFromCalc()">Subtract</button>
+                    <button class="btn" onclick="multiplyCalc()">Multiply</button>
+                    <button class="btn" onclick="divideCalc()">Divide</button>
+                    <button class="btn" onclick="resetCalc()">Reset</button>
+                </div>
+                <div class="output" id="calculatorOutput">Result: 0</div>
+            </div>
+
+            <div class="demo-section">
+                <h3>IIFE for Private Variables</h3>
+                <div class="code-block">
+const Counter = (function() {
+    let count = 0;
+    let step = 1;
+    
+    return {
+        increment: () => count += step,
+        decrement: () => count -= step,
+        getCount: () => count,
+        setStep: (newStep) => step = newStep,
+        reset: () => count = 0
+    };
+})();
+                </div>
+                <div class="input-group">
+                    <input type="number" id="stepValue" placeholder="Step value" value="1">
+                    <button class="btn" onclick="setCounterStep()">Set Step</button>
+                    <button class="btn" onclick="incrementCounter()">+</button>
+                    <button class="btn" onclick="decrementCounter()">-</button>
+                    <button class="btn" onclick="resetCounter()">Reset</button>
+                </div>
+                <div class="output" id="counterOutput">Count: 0, Step: 1</div>
+            </div>
+
+            <div class="demo-section">
+                <h3>IIFE with Configuration</h3>
+                <div class="code-block">
+const AppConfig = (function(config) {
+    const settings = {
+        theme: config.theme || 'light',
+        language: config.language || 'en',
+        debug: config.debug || false
+    };
+    
+    return {
+        get: (key) => settings[key],
+        set: (key, value) => settings[key] = value,
+        getAll: () => ({ ...settings })
+    };
+})({
+    theme: 'dark',
+    language: 'en',
+    debug: true
+});
+                </div>
+                <div class="input-group">
+                    <select id="themeSelect">
+                        <option value="light">Light</option>
+                        <option value="dark" selected>Dark</option>
+                        <option value="blue">Blue</option>
+                    </select>
+                    <select id="languageSelect">
+                        <option value="en" selected>English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                    </select>
+                    <button class="btn" onclick="updateConfig()">Update Config</button>
+                </div>
+                <div class="output" id="configOutput"></div>
+            </div>
+
+            <div class="demo-section">
+                <h3>IIFE for Initialization</h3>
+                <div class="code-block">
+const GameState = (function() {
+    let player = { name: '', score: 0, level: 1 };
+    let gameStarted = false;
+    
+    // Initialize game on creation
+    (function init() {
+        console.log("Game initialized!");
+        player.name = "Player1";
+    })();
+    
+    return {
+        startGame: () => gameStarted = true,
+        endGame: () => gameStarted = false,
+        addScore: (points) => player.score += points,
+        levelUp: () => player.level++,
+        getPlayer: () => ({ ...player }),
+        isGameStarted: () => gameStarted
+    };
+})();
+                </div>
+                <div class="input-group">
+                    <input type="text" id="playerName" placeholder="Player name" value="Player1">
+                    <input type="number" id="scorePoints" placeholder="Points to add" value="100">
+                    <button class="btn" onclick="startGame()">Start Game</button>
+                    <button class="btn" onclick="addScore()">Add Score</button>
+                    <button class="btn" onclick="levelUp()">Level Up</button>
+                    <button class="btn" onclick="endGame()">End Game</button>
+                </div>
+                <div class="output" id="gameOutput"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="arrow-functions.html" class="nav-link">← Arrow Functions</a>
+            <a href="higher-order-functions.html" class="nav-link">Higher Order →</a>
+            <a href="user-defined-functions.html" class="nav-link">User Defined</a>
+            <a href="expression-functions.html" class="nav-link">Expression Functions</a>
+        </div>
+    </div>
+
+    <script>
+        // IIFE Module Pattern - Calculator
+        const Calculator = (function() {
+            let result = 0;
+            
+            return {
+                add: function(x) { result += x; return this; },
+                subtract: function(x) { result -= x; return this; },
+                multiply: function(x) { result *= x; return this; },
+                divide: function(x) { 
+                    if (x !== 0) result /= x; 
+                    return this; 
+                },
+                getResult: function() { return result; },
+                reset: function() { result = 0; return this; }
+            };
+        })();
+
+        // IIFE for Counter with Private Variables
+        const Counter = (function() {
+            let count = 0;
+            let step = 1;
+            
+            return {
+                increment: () => count += step,
+                decrement: () => count -= step,
+                getCount: () => count,
+                getStep: () => step,
+                setStep: (newStep) => step = newStep,
+                reset: () => count = 0
+            };
+        })();
+
+        // IIFE with Configuration
+        const AppConfig = (function(config) {
+            const settings = {
+                theme: config.theme || 'light',
+                language: config.language || 'en',
+                debug: config.debug || false
+            };
+            
+            return {
+                get: (key) => settings[key],
+                set: (key, value) => settings[key] = value,
+                getAll: () => ({ ...settings })
+            };
+        })({
+            theme: 'dark',
+            language: 'en',
+            debug: true
+        });
+
+        // IIFE for Game State with Initialization
+        const GameState = (function() {
+            let player = { name: '', score: 0, level: 1 };
+            let gameStarted = false;
+            
+            // Initialize game on creation
+            (function init() {
+                console.log("Game initialized!");
+                player.name = "Player1";
+            })();
+            
+            return {
+                startGame: () => gameStarted = true,
+                endGame: () => gameStarted = false,
+                addScore: (points) => player.score += points,
+                levelUp: () => player.level++,
+                setPlayerName: (name) => player.name = name,
+                getPlayer: () => ({ ...player }),
+                isGameStarted: () => gameStarted
+            };
+        })();
+
+        // Demo Functions
+        function demonstrateBasicIIFE() {
+            let output = "";
+            
+            // Capture console output for demo
+            const originalLog = console.log;
+            console.log = function(message) {
+                output += message + "<br>";
+                originalLog(message);
+            };
+            
+            // Run IIFE examples
+            (function() {
+                console.log("Traditional IIFE executed!");
+            })();
+            
+            (() => {
+                console.log("Arrow IIFE executed!");
+            })();
+            
+            ((name, age) => {
+                console.log(`IIFE with parameters: Hello ${name}, age ${age}!`);
+            })("Alice", 30);
+            
+            // Restore console.log
+            console.log = originalLog;
+            
+            document.getElementById('basicIIFEOutput').innerHTML = output;
+        }
+
+        function addToCalc() {
+            const value = parseFloat(document.getElementById('calcValue').value) || 0;
+            Calculator.add(value);
+            document.getElementById('calculatorOutput').innerHTML = `Result: ${Calculator.getResult()}`;
+        }
+
+        function subtractFromCalc() {
+            const value = parseFloat(document.getElementById('calcValue').value) || 0;
+            Calculator.subtract(value);
+            document.getElementById('calculatorOutput').innerHTML = `Result: ${Calculator.getResult()}`;
+        }
+
+        function multiplyCalc() {
+            const value = parseFloat(document.getElementById('calcValue').value) || 1;
+            Calculator.multiply(value);
+            document.getElementById('calculatorOutput').innerHTML = `Result: ${Calculator.getResult()}`;
+        }
+
+        function divideCalc() {
+            const value = parseFloat(document.getElementById('calcValue').value) || 1;
+            Calculator.divide(value);
+            document.getElementById('calculatorOutput').innerHTML = `Result: ${Calculator.getResult()}`;
+        }
+
+        function resetCalc() {
+            Calculator.reset();
+            document.getElementById('calculatorOutput').innerHTML = `Result: ${Calculator.getResult()}`;
+        }
+
+        function setCounterStep() {
+            const step = parseInt(document.getElementById('stepValue').value) || 1;
+            Counter.setStep(step);
+            updateCounterDisplay();
+        }
+
+        function incrementCounter() {
+            Counter.increment();
+            updateCounterDisplay();
+        }
+
+        function decrementCounter() {
+            Counter.decrement();
+            updateCounterDisplay();
+        }
+
+        function resetCounter() {
+            Counter.reset();
+            updateCounterDisplay();
+        }
+
+        function updateCounterDisplay() {
+            document.getElementById('counterOutput').innerHTML = 
+                `Count: ${Counter.getCount()}, Step: ${Counter.getStep()}`;
+        }
+
+        function updateConfig() {
+            const theme = document.getElementById('themeSelect').value;
+            const language = document.getElementById('languageSelect').value;
+            
+            AppConfig.set('theme', theme);
+            AppConfig.set('language', language);
+            
+            const config = AppConfig.getAll();
+            document.getElementById('configOutput').innerHTML = 
+                `Theme: ${config.theme}<br>Language: ${config.language}<br>Debug: ${config.debug}`;
+        }
+
+        function startGame() {
+            const playerName = document.getElementById('playerName').value || "Player1";
+            GameState.setPlayerName(playerName);
+            GameState.startGame();
+            updateGameDisplay();
+        }
+
+        function addScore() {
+            const points = parseInt(document.getElementById('scorePoints').value) || 0;
+            GameState.addScore(points);
+            updateGameDisplay();
+        }
+
+        function levelUp() {
+            GameState.levelUp();
+            updateGameDisplay();
+        }
+
+        function endGame() {
+            GameState.endGame();
+            updateGameDisplay();
+        }
+
+        function updateGameDisplay() {
+            const player = GameState.getPlayer();
+            const gameStarted = GameState.isGameStarted();
+            
+            document.getElementById('gameOutput').innerHTML = 
+                `Player: ${player.name}<br>Score: ${player.score}<br>Level: ${player.level}<br>Game Started: ${gameStarted}`;
+        }
+
+        // Initialize displays
+        window.addEventListener('DOMContentLoaded', () => {
+            updateCounterDisplay();
+            updateConfig();
+            updateGameDisplay();
+        });
+    </script>
+</body>
+</html>

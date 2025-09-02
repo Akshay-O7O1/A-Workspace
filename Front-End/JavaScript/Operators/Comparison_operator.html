@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Operators in JavaScript</title>
+    <link rel="stylesheet" href="operators-style.css">
+</head>
+<body class="comparison">
+    <div class="container">
+        <h1>Comparison Operators in JavaScript</h1>
+        
+        <div class="operator-section">
+            <h3>Equal (==)</h3>
+            <p>Compares values with type coercion</p>
+            <div class="code">5 == "5" // true (string converted to number)</div>
+            <button onclick="demonstrateEqual()">Test Equal Operator</button>
+            <div id="equalResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Strict Equal (===)</h3>
+            <p>Compares values without type coercion</p>
+            <div class="code">5 === "5" // false (different types)</div>
+            <button onclick="demonstrateStrictEqual()">Test Strict Equal</button>
+            <div id="strictEqualResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Not Equal (!=)</h3>
+            <p>Checks if values are not equal with type coercion</p>
+            <div class="code">5 != "6" // true</div>
+            <button onclick="demonstrateNotEqual()">Test Not Equal</button>
+            <div id="notEqualResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Strict Not Equal (!==)</h3>
+            <p>Checks if values are not equal without type coercion</p>
+            <div class="code">5 !== "5" // true (different types)</div>
+            <button onclick="demonstrateStrictNotEqual()">Test Strict Not Equal</button>
+            <div id="strictNotEqualResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Greater Than (>)</h3>
+            <p>Checks if left value is greater than right value</p>
+            <div class="code">10 > 5 // true</div>
+            <button onclick="demonstrateGreaterThan()">Test Greater Than</button>
+            <div id="greaterThanResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Less Than (<)</h3>
+            <p>Checks if left value is less than right value</p>
+            <div class="code">3 < 8 // true</div>
+            <button onclick="demonstrateLessThan()">Test Less Than</button>
+            <div id="lessThanResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Greater Than or Equal (>=)</h3>
+            <p>Checks if left value is greater than or equal to right value</p>
+            <div class="code">10 >= 10 // true</div>
+            <button onclick="demonstrateGreaterThanEqual()">Test Greater Than or Equal</button>
+            <div id="greaterThanEqualResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Less Than or Equal (<=)</h3>
+            <p>Checks if left value is less than or equal to right value</p>
+            <div class="code">5 <= 7 // true</div>
+            <button onclick="demonstrateLessThanEqual()">Test Less Than or Equal</button>
+            <div id="lessThanEqualResult" class="result"></div>
+        </div>
+
+        <div class="operator-section">
+            <h3>Type Coercion Examples</h3>
+            <p>Understanding how JavaScript converts types during comparison</p>
+            <div class="warning">⚠️ Be careful with type coercion! Use strict operators (=== and !==) when possible.</div>
+            <button onclick="demonstrateTypeCoercion()">Test Type Coercion</button>
+            <div id="typeCoercionResult" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function demonstrateEqual() {
+            let results = [
+                `5 == 5: ${5 == 5}`,
+                `5 == "5": ${5 == "5"}`,
+                `true == 1: ${true == 1}`,
+                `false == 0: ${false == 0}`,
+                `null == undefined: ${null == undefined}`,
+                `"" == 0: ${"" == 0}`
+            ];
+            
+            document.getElementById('equalResult').innerHTML = results.join('<br>');
+        }
+
+        function demonstrateStrictEqual() {
+            let results = [
+                `5 === 5: ${5 === 5}`,
+                `5 === "5": ${5 === "5"}`,
+                `true === 1: ${true === 1}`,
+                `false === 0: ${false === 0}`,
+                `null === undefined: ${null === undefined}`,
+                `"hello" === "hello": ${"hello" === "hello"}`
+            ];
+            
+            document.getElementById('strictEqualResult').innerHTML = results.join('<br>');
+        }
+
+        function demonstrateNotEqual() {
+            let results = [
+                `5 != 3: ${5 != 3}`,
+                `5 != "5": ${5 != "5"}`,
+                `true != 1: ${true != 1}`,
+                `"hello" != "world": ${"hello" != "world"}`,
+                `null != undefined: ${null != undefined}`
+            ];
+            
+            document.getElementById('notEqualResult').innerHTML = results.join('<br>');
+        }
+
+        function demonstrateStrictNotEqual() {
+            let results = [
+                `5 !== 3: ${5 !== 3}`,
+                `5 !== "5": ${5 !== "5"}`,
+                `true !== 1: ${true !== 1}`,
+                `"hello" !== "hello": ${"hello" !== "hello"}`,
+                `null !== undefined: ${null !== undefined}`
+            ];
+            
+            document.getElementById('strictNotEqualResult').innerHTML = results.join('<br>');
+        }
+
+        function demonstrateGreaterThan() {
+            let results = [
+                `10 > 5: ${10 > 5}`,
+                `3 > 8: ${3 > 8}`,
+                `"b" > "a": ${"b" > "a"}`,
+                `"10" > "2": ${"10" > "2"}`,
+                `"10" > 2: ${"10" > 2}`
+            ];
+            
+            document.getElementById('greaterThanResult').innerHTML = results.join('<br>');
+        }
+
+        function demonstrateLessThan() {
+            let results = [
+                `3 < 8: ${3 < 8}`,
+                `10 < 5: ${10 < 5}`,
+                `"a" < "b": ${"a" < "b"}`,
+                `"2" < "10": ${"2" < "10"}`,
+                `2 < "10": ${2 < "10"}`
+            ];
+            
+            document.getElementById('lessThanResult').innerHTML = results.join('<br>');
+        }
+
+        function demonstrateGreaterThanEqual() {
+            let results = [
+                `10 >= 10: ${10 >= 10}`,
+                `15 >= 10: ${15 >= 10}`,
+                `5 >= 10: ${5 >= 10}`,
+                `"5" >= 5: ${"5" >= 5}`,
+                `true >= 1: ${true >= 1}`
+            ];
+            
+            document.getElementById('greaterThanEqualResult').innerHTML = results.join('<br>');
+        }
+
+        function demonstrateLessThanEqual() {
+            let results = [
+                `5 <= 7: ${5 <= 7}`,
+                `10 <= 10: ${10 <= 10}`,
+                `15 <= 10: ${15 <= 10}`,
+                `"5" <= 5: ${"5" <= 5}`,
+                `false <= 0: ${false <= 0}`
+            ];
+            
+            document.getElementById('lessThanEqualResult').innerHTML = results.join('<br>');
+        }
+
+        function demonstrateTypeCoercion() {
+            let results = [
+                `"2" > "12": ${"2" > "12"} (string comparison)`,
+                `"2" > 12: ${"2" > 12} (number comparison)`,
+                `true == 1: ${true == 1} (boolean to number)`,
+                `false == "": ${false == ""} (both become 0)`,
+                `"0" == false: ${"0" == false} (both become 0)`,
+                `[] == 0: ${[] == 0} (empty array becomes 0)`,
+                `[1] == 1: ${[1] == 1} (array with one element)`,
+                `null >= 0: ${null >= 0} (null becomes 0)`
+            ];
+            
+            document.getElementById('typeCoercionResult').innerHTML = results.join('<br>');
+        }
+    </script>
+</body>
+</html>
